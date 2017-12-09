@@ -1,5 +1,5 @@
 {
-  "name": "cryptolog",
+  "name": "cryptologg",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thomasvaeth/cryptolog.git"
+    "url": "git+https://github.com/thomasvaeth/cryptologg.git"
   },
   "bugs": {
-    "url": "https://github.com/thomasvaeth/cryptolog/issues"
+    "url": "https://github.com/thomasvaeth/cryptologg/issues"
   },
   "author": {
     "name": "Thomas Vaeth",
@@ -22,12 +22,16 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
+    "eslint": "^4.13.0",
+    "eslint-config-eslint": "^4.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-clean-css": "^3.9.0",
+    "gulp-eslint": "^4.0.0",
     "gulp-file-include": "^2.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",

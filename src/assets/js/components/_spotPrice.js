@@ -23,9 +23,20 @@ const SpotPrice = (() => {
     },
 
     bindEvents() {
+      this.date();
       s.cryptocurrency.forEach(currency => {
         this.cryptocurrency(currency);
       });
+    },
+
+    date() {
+      const lastChecked = localStorage.getItem('lastChecked');
+
+      if (lastChecked) {
+        localStorage.setItem('lastChecked', new Date().getTime() - lastChecked);
+      } else {
+        localStorage.setItem('lastChecked', new Date().getTime());
+      }
     },
 
     cryptocurrency(currency) {
@@ -37,7 +48,7 @@ const SpotPrice = (() => {
           console.log(error);
         });
     }
-  }
+  };
 })();
 
 // ----------------------------------------------
