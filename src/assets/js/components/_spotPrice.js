@@ -24,6 +24,7 @@ const SpotPrice = (() => {
 
     bindEvents() {
       this.time();
+      this.count();
       s.cryptocurrency.forEach(currency => {
         this.cryptocurrency(currency);
       });
@@ -39,6 +40,16 @@ const SpotPrice = (() => {
       }
     },
 
+    count() {
+      const count = localStorage.getItem('count');
+
+      if (count) {
+        localStorage.setItem('count', parseInt(count, 10) + 1);
+      } else {
+        localStorage.setItem('count', 1);
+      }
+    },
+
     cryptocurrency(currency) {
       const currencyFormat = currency.toLowerCase();
 
@@ -46,9 +57,12 @@ const SpotPrice = (() => {
         .then(response => {
           const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
           const currentValue = response.data.data.amount;
-          const changeValue = Number(lastValue - currentValue).toFixed(2);
 
-          console.log(changeValue, currency);
+          if (lastValue) {
+            const changeValue = Number(lastValue - currentValue).toFixed(2);
+
+            console.log(changeValue, currency);
+          }
 
           localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
         })
