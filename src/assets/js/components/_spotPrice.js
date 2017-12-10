@@ -23,13 +23,13 @@ const SpotPrice = (() => {
     },
 
     bindEvents() {
-      this.date();
+      this.time();
       s.cryptocurrency.forEach(currency => {
         this.cryptocurrency(currency);
       });
     },
 
-    date() {
+    time() {
       const lastChecked = localStorage.getItem('lastChecked');
 
       if (lastChecked) {
@@ -40,9 +40,17 @@ const SpotPrice = (() => {
     },
 
     cryptocurrency(currency) {
+      const currencyFormat = currency.toLowerCase();
+
       axios.get(`https://api.coinbase.com/v2/prices/${currency}-USD/buy`, { 'headers': { 'CB-VERSION': s.versionDate } })
         .then(response => {
-          console.log(response.data.data.amount, currency);
+          const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
+          const currentValue = response.data.data.amount;
+          const changeValue = Number(lastValue - currentValue).toFixed(2);
+
+          console.log(changeValue, currency);
+
+          localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
         })
         .catch(error => {
           console.log(error);
