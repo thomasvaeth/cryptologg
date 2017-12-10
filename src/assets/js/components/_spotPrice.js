@@ -20,6 +20,12 @@ const SpotPrice = (() => {
     init() {
       s = this.settings();
       this.bindEvents();
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          this.bindEvents();
+        }
+      });
     },
 
     bindEvents() {
