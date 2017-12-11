@@ -14,7 +14,7 @@ const SpotPrice = (() => {
     settings() {
       return {
         cryptocurrency: ['BTC', 'ETH', 'LTC'],
-        versionDate: '2017-12-08',
+        // versionDate: '2017-12-08',
         count: document.getElementsByClassName('mast__count')[0],
         time: document.getElementsByClassName('mast__time')[0],
         container: document.getElementsByClassName('crypto__value'),
@@ -68,14 +68,16 @@ const SpotPrice = (() => {
     cryptocurrency(currency, idx) {
       const currencyFormat = currency.toLowerCase();
 
-      axios.get(`https://api.coinbase.com/v2/prices/${currency}-USD/buy`, { 'headers': { 'CB-VERSION': s.versionDate } })
+      // axios.get(`https://api.coinbase.com/v2/prices/${currency}-USD/spot`, { 'headers': { 'CB-VERSION': s.versionDate } })
+      // const currentValue = response.data.data.amount;
+      axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${currency}&tsyms=USD`)
         .then(response => {
           const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
-          const currentValue = response.data.data.amount;
+          const currentValue = response.data.USD;
 
           if (lastValue) {
             const image = s.image[idx].getElementsByTagName('img')[0];
-            let changeValue = Number(lastValue - currentValue).toFixed(2);
+            const changeValue = Number(lastValue - currentValue).toFixed(2);
 
             if (changeValue > 0) {
               image.src = 'assets/images/positive.png';
@@ -84,9 +86,8 @@ const SpotPrice = (() => {
             } else {
               image.src = 'assets/images/neutral.png';
             }
-
-            changeValue = changeValue < 0 ? `–$${Math.abs(changeValue)}` : `$${changeValue}`;
-            s.container[idx].innerHTML = changeValue;
+            
+            s.container[idx].innerHTML = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${changeValue}`;
           }
 
           localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
