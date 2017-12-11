@@ -2,7 +2,23 @@
 // Crypto
 //---------------------------------------------- 
 .crypto {
-  display: grid;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1em;
+
+    & > div {
+      @extend %flex-center;
+
+      flex-direction: column;
+      padding: 2em 1em;
+
+      border: 1px solid rgba($color-black, 0.3);
+      border-radius: 5px;
+      box-shadow: 0 1px 1px rgba($color-black, 0.1);
+    }
+  }
 
   &__btc {
 
@@ -14,5 +30,19 @@
 
   &__ltc {
 
+  }
+
+  &__img {
+    width: 2em;
+
+    img {
+      display: block;
+    }
+  }
+
+  &__value {
+    display: block;
+
+    font-size: 1.25em;
   }
 }

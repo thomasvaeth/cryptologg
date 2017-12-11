@@ -1,0 +1,75 @@
+//-------------------------------------------- 
+// Sections
+//--------------------------------------------
+section {
+  position: relative;
+}
+
+.section-padding {
+  padding: 2em 1em;
+
+  @media (min-width: $mq-small) {
+    padding: 4em 2em;
+  }
+
+  @media (min-width: $mq-med) {
+    padding: {
+      right: 1em;
+      left: 1em;
+    }
+  }
+
+  @media (min-width: $mq-xlarge) {
+    padding: {
+      top: 6em;
+      bottom: 6em;
+    }
+  }
+}
+
+//-------------------------------------------- 
+// Grid
+//--------------------------------------------
+.grid {
+  @extend %auto-margin;
+
+  width: 100%;
+  max-width: $max-width;
+
+  @media (min-width: $mq-med) {
+    width: 65%;
+  }
+
+  @media (min-width: $mq-xlarge) {
+    width: 50%;
+  }
+}
+
+.grid-large {
+  @extend %auto-margin;
+
+  width: 100%;
+  max-width: $max-width--lg;
+
+  @media (min-width: $mq-med) {
+    width: 80%;
+  }
+
+  @media (min-width: $mq-xlarge) {
+    width: 65%;
+  }
+}
+
+.grid-xlarge {
+  @extend %auto-margin;
+
+  width: 100%;
+
+  @media (min-width: $mq-med) {
+    width: 95%;
+  }
+
+  @media (min-width: $mq-xlarge) {
+    width: 80%;
+  }
+}

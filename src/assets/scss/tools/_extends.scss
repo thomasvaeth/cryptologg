@@ -1,0 +1,16 @@
+//----------------------------------------------
+// Flex Center
+//----------------------------------------------
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//----------------------------------------------
+// Auto Margin
+//----------------------------------------------
+%auto-margin {
+  margin-right: auto;
+  margin-left: auto;
+}

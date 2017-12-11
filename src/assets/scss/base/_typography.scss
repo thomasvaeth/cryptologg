@@ -61,6 +61,42 @@ h6 {
 }
 
 //----------------------------------------------
+// H1 Theme
+//---------------------------------------------- 
+h1 {
+  $fontSize: 3.5em;
+
+  font-size: $fontSize - 1em; 
+  line-height: 1.4;
+
+  @media (min-width: $mq-med) {
+    font-size: $fontSize;  
+  }
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $fontSize + 0.5em;
+  }
+}
+
+//----------------------------------------------
+// H2 Theme
+//---------------------------------------------- 
+h2 {
+  $fontSize: 2.25em;
+
+  font-size: $fontSize - 1em; 
+  line-height: 1.4;
+
+  @media (min-width: $mq-med) {
+    font-size: $fontSize;  
+  }
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $fontSize + 0.5em;
+  }
+}
+
+//----------------------------------------------
 // Paragraphs
 //---------------------------------------------- 
 p {

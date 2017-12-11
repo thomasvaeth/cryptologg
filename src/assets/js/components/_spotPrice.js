@@ -13,7 +13,9 @@ const SpotPrice = (() => {
     settings() {
       return {
         cryptocurrency: ['BTC', 'ETH', 'LTC'],
-        versionDate: '2017-12-08'
+        versionDate: '2017-12-08',
+        container: document.getElementsByClassName('crypto__value'),
+        image: document.getElementsByClassName('crypto__img')
       };
     },
 
@@ -31,8 +33,8 @@ const SpotPrice = (() => {
     bindEvents() {
       this.time();
       this.count();
-      s.cryptocurrency.forEach(currency => {
-        this.cryptocurrency(currency);
+      s.cryptocurrency.forEach((currency, idx) => {
+        this.cryptocurrency(currency, idx);
       });
     },
 
@@ -56,7 +58,7 @@ const SpotPrice = (() => {
       }
     },
 
-    cryptocurrency(currency) {
+    cryptocurrency(currency, idx) {
       const currencyFormat = currency.toLowerCase();
 
       axios.get(`https://api.coinbase.com/v2/prices/${currency}-USD/buy`, { 'headers': { 'CB-VERSION': s.versionDate } })
@@ -65,9 +67,19 @@ const SpotPrice = (() => {
           const currentValue = response.data.data.amount;
 
           if (lastValue) {
-            const changeValue = Number(lastValue - currentValue).toFixed(2);
+            const image = s.image[idx].getElementsByTagName('img')[0];
+            let changeValue = Number(lastValue - currentValue).toFixed(2);
 
-            console.log(changeValue, currency);
+            if (changeValue > 0) {
+              image.src = 'assets/images/positive.png';
+            } else if (changeValue < 0) {
+              image.src = 'assets/images/negative.png';
+            } else {
+              image.src = 'assets/images/neutral.png';
+            }
+
+            changeValue = changeValue < 0 ? `–$${Math.abs(changeValue)}` : `$${changeValue}`;
+            s.container[idx].innerHTML = changeValue;
           }
 
           localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
