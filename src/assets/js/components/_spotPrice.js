@@ -13,8 +13,7 @@ const SpotPrice = (() => {
   return {
     settings() {
       return {
-        cryptocurrency: ['BTC', 'ETH', 'LTC'],
-        // versionDate: '2017-12-08',
+        cryptocurrency: 'BTC,ETH,LTC',
         count: document.getElementsByClassName('mast__count')[0],
         time: document.getElementsByClassName('mast__time')[0],
         container: document.getElementsByClassName('crypto__value'),
@@ -36,9 +35,7 @@ const SpotPrice = (() => {
     bindEvents() {
       this.time();
       this.count();
-      s.cryptocurrency.forEach((currency, idx) => {
-        this.cryptocurrency(currency, idx);
-      });
+      this.cryptocurrency();
     },
 
     time() {
@@ -65,32 +62,36 @@ const SpotPrice = (() => {
       s.count.innerHTML = count;
     },
 
-    cryptocurrency(currency, idx) {
-      const currencyFormat = currency.toLowerCase();
-
-      // axios.get(`https://api.coinbase.com/v2/prices/${currency}-USD/spot`, { 'headers': { 'CB-VERSION': s.versionDate } })
-      // const currentValue = response.data.data.amount;
-      axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${currency}&tsyms=USD`)
+    cryptocurrency() {
+      axios.get(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${s.cryptocurrency}&tsyms=USD`)
         .then(response => {
-          const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
-          const currentValue = response.data.USD;
+          let idx = 0;
 
-          if (lastValue) {
-            const image = s.image[idx].getElementsByTagName('img')[0];
-            const changeValue = Number(lastValue - currentValue).toFixed(2);
+          for (const currency in response.data) {
+            if (response.data.hasOwnProperty(currency)) {
+              const currencyFormat = currency.toLowerCase();
+              const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
+              const currentValue = response.data[currency].USD;
 
-            if (changeValue > 0) {
-              image.src = 'assets/images/positive.png';
-            } else if (changeValue < 0) {
-              image.src = 'assets/images/negative.png';
-            } else {
-              image.src = 'assets/images/neutral.png';
+              if (lastValue) {
+                const image = s.image[idx].getElementsByTagName('img')[0];
+                const changeValue = Number(lastValue - currentValue).toFixed(2);
+
+                if (changeValue > 0) {
+                  image.src = 'assets/images/positive.png';
+                } else if (changeValue < 0) {
+                  image.src = 'assets/images/negative.png';
+                } else {
+                  image.src = 'assets/images/neutral.png';
+                }
+
+                s.container[idx].innerHTML = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${changeValue}`;
+                idx++;
+              }
+
+              localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
             }
-            
-            s.container[idx].innerHTML = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${changeValue}`;
           }
-
-          localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
         })
         .catch(error => {
           console.log(error);
