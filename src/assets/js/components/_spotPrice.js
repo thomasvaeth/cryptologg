@@ -2,6 +2,7 @@
 // Imports
 // ----------------------------------------------
 import axios from 'axios';
+import moment from 'moment';
 
 // ----------------------------------------------
 // Spot Price
@@ -14,6 +15,8 @@ const SpotPrice = (() => {
       return {
         cryptocurrency: ['BTC', 'ETH', 'LTC'],
         versionDate: '2017-12-08',
+        count: document.getElementsByClassName('mast__count')[0],
+        time: document.getElementsByClassName('mast__time')[0],
         container: document.getElementsByClassName('crypto__value'),
         image: document.getElementsByClassName('crypto__img')
       };
@@ -39,23 +42,27 @@ const SpotPrice = (() => {
     },
 
     time() {
+      const checked = moment().toISOString();
       const lastChecked = localStorage.getItem('lastChecked');
+      const timeDifference = moment.duration(moment(checked).diff(moment(lastChecked))).humanize();
 
-      if (lastChecked) {
-        localStorage.setItem('lastChecked', new Date().getTime() - lastChecked);
-      } else {
-        localStorage.setItem('lastChecked', new Date().getTime());
-      }
+      localStorage.setItem('lastChecked', checked);
+
+      s.time.innerHTML = timeDifference;
     },
 
     count() {
-      const count = localStorage.getItem('count');
+      let count = localStorage.getItem('count');
 
       if (count) {
-        localStorage.setItem('count', parseInt(count, 10) + 1);
+        count = parseInt(count, 10) + 1;
+        localStorage.setItem('count', count);
       } else {
-        localStorage.setItem('count', 1);
+        count = 1;
+        localStorage.setItem('count', count);
       }
+
+      s.count.innerHTML = count;
     },
 
     cryptocurrency(currency, idx) {
