@@ -14,10 +14,11 @@ class Crypto extends Component {
     this.state = { cryptoValue: {} };
 
     this.crypto = 'BTC,ETH,LTC';
-    this.spotPrice(this.crypto);
   }
 
   componentDidMount() {
+    this.spotPrice(this.crypto);
+    
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'visible') {
         this.spotPrice(this.crypto);
@@ -82,7 +83,7 @@ class Crypto extends Component {
 
   render() {
     return (
-      <section className="crypto section-padding--no-top">
+      <section className="crypto section-padding--no-padding">
         <div className="grid-large">
           <div className="crypto__container">
             {this.cards()}
