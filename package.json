@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "http://thomasvaeth.com",
   "scripts": {
-    "build": "webpack; gulp",
+    "build": "webpack",
     "lint": "eslint src/assets/js/**; exit 0"
   },
   "repository": {
@@ -32,8 +32,6 @@
     "eslint-config-eslint": "^4.0.0",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^3.0.2",
-    "gulp": "^3.9.1",
-    "gulp-file-include": "^2.0.0",
     "node-sass": "^4.7.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "sass-loader": "^6.0.6",
