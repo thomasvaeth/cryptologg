@@ -41,8 +41,11 @@ gulp.task('fonts', () => {
 
 gulp.task('lint', () => {
   return gulp.src([
-    './src/assets/js/components/_spotPrice.js',
-    './src/assets/js/_inits.js'
+    './src/assets/js/components/App.js',
+    './src/assets/js/components/Crypto.js',
+    './src/assets/js/components/Header.js',
+    './src/assets/js/components/Mast.js',
+    './src/assets/js/app.js'
   ])
   .pipe(eslint())
   .pipe(eslint.format())
@@ -51,7 +54,7 @@ gulp.task('lint', () => {
 
 gulp.task('browserify', ['lint'], () => {
   return browserify('./src/assets/js/app.js')
-  .transform('babelify', {presets: ['env']})
+  .transform('babelify', {presets: ['env', 'react']})
   .bundle()
   .pipe(source('app.js'))
   .pipe(buffer())
