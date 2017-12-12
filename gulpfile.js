@@ -2,16 +2,10 @@
 
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
-const babelify = require('babelify');
-const browserify = require('browserify');
-const buffer = require('vinyl-buffer');
 const cleanCSS = require('gulp-clean-css');
-const eslint = require('gulp-eslint');
 const fileinclude = require('gulp-file-include');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
-const source = require('vinyl-source-stream');
-const uglify = require('gulp-uglify');
 
 gulp.task('fileinclude', () => {
   return gulp.src('./src/pages/index.html')
@@ -39,36 +33,11 @@ gulp.task('fonts', () => {
   .pipe(gulp.dest('./assets/css'));
 });
 
-gulp.task('lint', () => {
-  return gulp.src([
-    './src/assets/js/components/App.js',
-    './src/assets/js/components/Crypto.js',
-    './src/assets/js/components/Header.js',
-    './src/assets/js/components/Mast.js',
-    './src/assets/js/app.js'
-  ])
-  .pipe(eslint())
-  .pipe(eslint.format())
-  .pipe(eslint.failAfterError());
-});
-
-gulp.task('browserify', ['lint'], () => {
-  return browserify('./src/assets/js/app.js')
-  .transform('babelify', {presets: ['env', 'react']})
-  .bundle()
-  .pipe(source('app.js'))
-  .pipe(buffer())
-  .pipe(uglify())
-  .pipe(rename({suffix: '.min'}))
-  .pipe(gulp.dest('./assets/js'));
-});
-
-gulp.task('build', ['fileinclude', 'sass', 'fonts', 'browserify']);
+gulp.task('build', ['fileinclude', 'sass', 'fonts']);
 
 gulp.task('watch', () => {
   gulp.watch('./src/pages/**/*.html', ['fileinclude']);
   gulp.watch('./src/assets/scss/**/*.scss', ['sass', 'fonts']);
-  gulp.watch('./src/assets/js/**/*.js', ['browserify']);
 });
 
 gulp.task('default', ['build', 'watch']);
