@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "http://thomasvaeth.com",
   "scripts": {
-    "start": "webpack --watch",
+    "start": "webpack --progress --watch",
     "build": "webpack",
     "lint": "eslint src/assets/js/**; exit 0"
   },

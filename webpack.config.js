@@ -24,8 +24,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new UglifyJsPlugin(),
+    // new UglifyJsPlugin(),
     new ExtractTextPlugin('../css/app.min.css'),
-    new OptimizeCssAssetsPlugin()
+    // new OptimizeCssAssetsPlugin()
   ]
 };

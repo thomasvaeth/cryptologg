@@ -10,7 +10,7 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <span className="header__logo">CryptoLogg 📈</span>
+        <h1 className="header__logo">CryptoLogg 📈</h1>
       </header>
     );
   }

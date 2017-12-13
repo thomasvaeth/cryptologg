@@ -37,12 +37,12 @@ class Crypto extends Component {
   }
 
   cards() {
-    const cards = Object.keys(this.state.cryptoValue).map(value => {
+    return Object.keys(this.state.cryptoValue).map(value => {
       const currencyFormat = value.toLowerCase();
       const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
       const currentValue = this.state.cryptoValue[value].USD;
       let title = 'Bitcoin';
-      let image = 'assets/images/neutral.png';
+      let emoji = '🤔';
       let text = '$0.00';
 
       if (value === 'BTC') {
@@ -54,12 +54,12 @@ class Crypto extends Component {
       }
 
       if (lastValue) {
-        const changeValue = Number(lastValue - currentValue).toFixed(2);
+        const changeValue = Number(currentValue - lastValue).toFixed(2);
 
         if (changeValue > 0) {
-          image = 'assets/images/positive.png';
+          emoji = '🤑';
         } else if (changeValue < 0) {
-          image = 'assets/images/negative.png';
+          emoji = '😵';
         }
 
         text = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${changeValue}`;
@@ -68,22 +68,18 @@ class Crypto extends Component {
       localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
 
       return (
-        <div className="crypto__btc section-padding" key={value}>
-          <figure className="crypto__img">
-            <img src={image} alt="Emoji Face"/>
-          </figure>
+        <div className="section-padding" key={value}>
+          <span className="crypto__emoji">{emoji}</span>
           <h2>{title}</h2>
           <span className="crypto__value">{text}</span>
         </div>
       );
     });
-
-    return cards;
   }
 
   render() {
     return (
-      <section className="crypto section-padding--no-padding">
+      <section className="crypto section-padding--none">
         <div className="grid-large">
           <div className="crypto__container">
             {this.cards()}
