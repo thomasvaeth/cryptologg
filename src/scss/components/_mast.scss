@@ -4,6 +4,10 @@
 .mast {
 
   &__text {
-    font-size: 3em;
+    font-size: 2em;
+
+    @media (min-width: $mq-small) {
+      font-size: 3em;
+    }
   }
 }

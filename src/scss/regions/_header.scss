@@ -3,8 +3,16 @@
 //----------------------------------------------
 .header {
   padding: {
-    top: 2em;
-    right: 2em;
-    left: 2em;
+    top: 1em;
+    right: 1em;
+    left: 1em;
+  }
+
+  @media (min-width: $mq-small) {
+    padding: {
+      top: 2em;
+      right: 2em;
+      left: 2em;
+    }
   }
 }
