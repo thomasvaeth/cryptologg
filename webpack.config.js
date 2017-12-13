@@ -1,13 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
-
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: './src/assets/js/app.js',
+  entry: './src/js/app.js',
   output: {
     path: path.resolve(__dirname, 'assets/js'),
     filename: 'bundle.min.js'
