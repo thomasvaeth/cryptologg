@@ -2,5 +2,8 @@
 // Main
 //----------------------------------------------
 main {
-  margin-top: $header-height;
+  margin: {
+    top: $header-height;
+    bottom: $header-height;
+  }
 }

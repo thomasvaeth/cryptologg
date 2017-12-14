@@ -81,7 +81,7 @@ class Crypto extends Component {
 
   render() {
     return (
-      <section className="crypto section-padding--no-bottom">
+      <section className="crypto section-padding">
         <div className="crypto__container">
           {this.cards()}
         </div>

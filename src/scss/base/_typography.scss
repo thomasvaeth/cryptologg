@@ -72,36 +72,6 @@ p {
 }
 
 //----------------------------------------------
-// Blockquote
-//---------------------------------------------- 
-blockquote {
-  margin: 0;
-
-  font-family: $font;
-  font-weight: 700;
-  font-size: 2em;
-  line-height: $base-lineheight;
-
-  @media (min-width: $mq-small) {
-    font-size: 3em;
-  }
-
-  cite {
-    display: block;
-
-    font-family: $font;
-    font-weight: 700;
-    font-size: 1em;
-    font-style: normal;
-    line-height: $base-lineheight;
-
-    &:before {
-      content: "\2014 \0020";
-    }
-  }
-}
-
-//----------------------------------------------
 // Selection
 //---------------------------------------------- 
 ::selection {

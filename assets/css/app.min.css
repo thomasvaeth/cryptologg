@@ -9,7 +9,7 @@
       -ms-flex-pack: center;
           justify-content: center; }
 
-.grid, .grid-large, .grid-xlarge {
+.grid {
   margin-right: auto;
   margin-left: auto; }
 
@@ -467,25 +467,6 @@ p {
   margin-top: 0;
   margin-bottom: 0; }
 
-blockquote {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-size: 2em;
-  line-height: 1.6; }
-  @media (min-width: 32em) {
-    blockquote {
-      font-size: 3em; } }
-  blockquote cite {
-    display: block;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-size: 1em;
-    font-style: normal;
-    line-height: 1.6; }
-    blockquote cite:before {
-      content: "\2014    "; }
-
 ::-moz-selection {
   color: #fff;
   background: #001856;
@@ -497,7 +478,8 @@ blockquote {
   text-shadow: none; }
 
 main {
-  margin-top: 5em; }
+  margin-top: 5em;
+  margin-bottom: 5em; }
 
 .header {
   position: fixed;
@@ -712,23 +694,6 @@ section {
       padding-top: 6em;
       padding-bottom: 6em; } }
 
-.section-padding--no-bottom {
-  padding-top: 2em;
-  padding-right: 1em;
-  padding-left: 1em; }
-  @media (min-width: 32em) {
-    .section-padding--no-bottom {
-      padding-top: 4em;
-      padding-right: 2em;
-      padding-left: 2em; } }
-  @media (min-width: 54em) {
-    .section-padding--no-bottom {
-      padding-right: 1em;
-      padding-left: 1em; } }
-  @media (min-width: 91em) {
-    .section-padding--no-bottom {
-      padding-top: 6em; } }
-
 .grid {
   width: 100%;
   max-width: 45em; }
@@ -738,22 +703,3 @@ section {
   @media (min-width: 91em) {
     .grid {
       width: 50%; } }
-
-.grid-large {
-  width: 100%;
-  max-width: 65em; }
-  @media (min-width: 54em) {
-    .grid-large {
-      width: 80%; } }
-  @media (min-width: 91em) {
-    .grid-large {
-      width: 65%; } }
-
-.grid-xlarge {
-  width: 100%; }
-  @media (min-width: 54em) {
-    .grid-xlarge {
-      width: 95%; } }
-  @media (min-width: 91em) {
-    .grid-xlarge {
-      width: 80%; } }

@@ -35552,7 +35552,7 @@ var Crypto = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'section',
-        { className: 'crypto section-padding--no-bottom' },
+        { className: 'crypto section-padding' },
         _react2.default.createElement(
           'div',
           { className: 'crypto__container' },
