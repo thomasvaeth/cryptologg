@@ -3,10 +3,9 @@
 //---------------------------------------------- 
 body {
   font-family: $font;
-  font-weight: 700;
   line-height: $base-lineheight;
   color: $color-alpha;
-  background-color: $color-beta;
+  background-color: $color-white;
 }
 
 //----------------------------------------------
@@ -58,39 +57,8 @@ h6 {
     bottom: 0;
   }
 
-  font-weight: 700;
+  font-weight: 400;
   line-height: $base-lineheight;
-}
-
-//----------------------------------------------
-// H1 Theme
-//---------------------------------------------- 
-h1 {
-  $fontSize: 2.5em;
-
-  font-size: $fontSize - 0.5em;
-
-  @media (min-width: $mq-small) {
-    font-size: $fontSize;
-  }
-}
-
-//----------------------------------------------
-// H2 Theme
-//---------------------------------------------- 
-h2 {
-  $fontSize: 2.5em;
-
-  margin: {
-    top: 0.125em;
-    bottom: 0.125em;
-  }
-
-  font-size: $fontSize - 0.5em;
-
-  @media (min-width: $mq-small) {
-    font-size: $fontSize;
-  }
 }
 
 //----------------------------------------------

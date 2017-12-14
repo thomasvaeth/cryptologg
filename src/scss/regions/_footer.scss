@@ -1,12 +1,6 @@
 //----------------------------------------------
-// Media
+// Main
 //----------------------------------------------
-img,
-figure {
-  max-width: 100%;
-  height: auto;
-}
-
-figure {
-  margin: 0;
+main {
+  margin-top: $header-height;
 }

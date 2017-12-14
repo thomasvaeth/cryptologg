@@ -2,10 +2,14 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/js/app.js',
+  entry: {
+    app: [
+      './src/js/app.js'
+    ]
+  },
   output: {
     path: path.resolve(__dirname, 'assets/js'),
-    filename: 'bundle.min.js'
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [
@@ -21,6 +25,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('../css/app.min.css')
+    new ExtractTextPlugin('../css/[name].min.css')
   ]
 };

@@ -1,20 +1,23 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React, { Component } from 'react';
+import React from 'react';
 
 // ----------------------------------------------
 // Header
 // ----------------------------------------------
-class Header extends Component {
-  render() {
-    return (
-      <header className="header">
-        <h1 className="header__logo">CryptoLogg 📈</h1>
-      </header>
-    );
-  }
-}
+const Header = () => {
+  const logoArr = ['chart-down', 'chart-up'];
+  const logo = logoArr[Math.floor(Math.random() * logoArr.length)];
+
+  return (
+    <header className="header">
+      <figure className="header__img">
+        <img src={`assets/images/${logo}.png`} alt="CryptoLogg"/>
+      </figure>
+    </header>
+  );
+};
 
 // ----------------------------------------------
 // Exports

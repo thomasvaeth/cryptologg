@@ -68,10 +68,12 @@ class Crypto extends Component {
       localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
 
       return (
-        <div className="section-padding" key={value}>
-          <span className="crypto__emoji">{emoji}</span>
-          <h2>{title}</h2>
-          <span className="crypto__value">{text}</span>
+        <div className="crypto__subcontainer" key={value}>
+          <div className="crypto__content">
+            <span className="crypto__emoji">{emoji}</span>
+            <h2 className="crypto__title">{title}</h2>
+            <span className="crypto__value">{text}</span>
+          </div>
         </div>
       );
     });
@@ -79,11 +81,9 @@ class Crypto extends Component {
 
   render() {
     return (
-      <section className="crypto section-padding--none">
-        <div className="grid-large">
-          <div className="crypto__container">
-            {this.cards()}
-          </div>
+      <section className="crypto section-padding--no-bottom">
+        <div className="crypto__container">
+          {this.cards()}
         </div>
       </section>
     );

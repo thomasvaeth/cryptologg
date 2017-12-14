@@ -1,7 +1,6 @@
 //----------------------------------------------   
 //  Main Styling Build
 //  
-//  Fonts:      Fonts, icons
 //  Tools:      Configs, variables
 //  Base:       Styles for base level elements
 //  Vendor:     Vendor specific styles
@@ -9,11 +8,6 @@
 //  Components: Modular components -> Most styles
 //  Utils:      Utilities, animations
 //---------------------------------------------- 
-
-//----------------------------------------------
-// Fonts
-//---------------------------------------------- 
-@import 'fonts/_proxima-nova';
 
 //----------------------------------------------
 // Tools: Main Config & Global Variables
@@ -48,6 +42,7 @@
 //----------------------------------------------
 // Regions
 //---------------------------------------------- 
+@import 'regions/_footer';
 @import 'regions/_header';
 
 //----------------------------------------------   
@@ -56,6 +51,7 @@
 @import 'components/_crypto';
 @import 'components/_mast';
 @import 'components/_quote';
+@import 'components/_time';
 
 //----------------------------------------------   
 // Utils
