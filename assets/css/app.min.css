@@ -550,7 +550,7 @@ main {
   height: 100%;
   width: 100%;
   padding: 4em 1em;
-  border: 5px solid #001856; }
+  border: 3px solid #001856; }
 
 .crypto__emoji {
   display: block;
@@ -570,6 +570,10 @@ main {
 
 .quote__quote:not(:last-child) {
   margin-bottom: 0.75em; }
+
+.time__link {
+  color: #001856;
+  text-decoration: none; }
 
 section {
   position: relative; }

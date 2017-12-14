@@ -42,7 +42,7 @@ class Crypto extends Component {
       const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
       const currentValue = this.state.cryptoValue[value].USD;
       let title = 'Bitcoin';
-      let emoji = '🤔';
+      let emoji = ['🤔', '😶'][Math.floor(Math.random() * 2)];
       let text = '$0.00';
 
       if (value === 'BTC') {
@@ -57,9 +57,9 @@ class Crypto extends Component {
         const changeValue = Number(currentValue - lastValue).toFixed(2);
 
         if (changeValue > 0) {
-          emoji = '🤑';
+          emoji = ['🤑', '😎'][Math.floor(Math.random() * 2)];
         } else if (changeValue < 0) {
-          emoji = '😵';
+          emoji = ['😵', '😥', '🤢'][Math.floor(Math.random() * 3)];
         }
 
         text = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${changeValue}`;

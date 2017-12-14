@@ -34999,8 +34999,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Header
 // ----------------------------------------------
 var Header = function Header() {
-  var logoArr = ['chart-down', 'chart-up'];
-  var logo = logoArr[Math.floor(Math.random() * logoArr.length)];
+  var logo = ['chart-down', 'chart-up'][Math.floor(Math.random() * 2)];
 
   return _react2.default.createElement(
     'header',
@@ -35051,7 +35050,7 @@ var Mast = function Mast() {
       _react2.default.createElement(
         "p",
         { className: "mast__text" },
-        "CryptoLogg only shows the price change of cryptocurrencies since the last time you checked. This is to discourages you from checking the values of your investments often."
+        "CryptoLogg only shows the price change of cryptocurrencies since the last time you checked. This is to discourages you from checking the values of your investments often. \uD83D\uDCB8"
       )
     )
   );
@@ -35434,7 +35433,7 @@ var Crypto = function (_Component) {
         var lastValue = localStorage.getItem(currencyFormat + 'LastValue');
         var currentValue = _this4.state.cryptoValue[value].USD;
         var title = 'Bitcoin';
-        var emoji = '🤔';
+        var emoji = ['🤔', '😶'][Math.floor(Math.random() * 2)];
         var text = '$0.00';
 
         if (value === 'BTC') {
@@ -35449,9 +35448,9 @@ var Crypto = function (_Component) {
           var changeValue = Number(currentValue - lastValue).toFixed(2);
 
           if (changeValue > 0) {
-            emoji = '🤑';
+            emoji = ['🤑', '😎'][Math.floor(Math.random() * 2)];
           } else if (changeValue < 0) {
-            emoji = '😵';
+            emoji = ['😵', '😥', '🤢'][Math.floor(Math.random() * 3)];
           }
 
           text = changeValue < 0 ? '\u2013$' + Number(Math.abs(changeValue)).toFixed(2) : '$' + changeValue;
@@ -36491,7 +36490,13 @@ var Time = function (_Component) {
           _react2.default.createElement(
             'p',
             { className: 'time__text' },
-            'Warren Buffet said, \u201CBuy, hold, and don\'t watch the market closely,\u201D but the last time you checked was ',
+            'Warren Buffet said, ',
+            _react2.default.createElement(
+              'a',
+              { className: 'time__link', href: 'https://www.cnbc.com/2016/03/04/warren-buffett-buy-hold-and-dont-watch-too-closely.html', target: '_blank' },
+              '\u201CBuy, hold, and don\'t watch the market closely,\u201D'
+            ),
+            ' but the last time you checked was ',
             this.state.time,
             ' ago.'
           )

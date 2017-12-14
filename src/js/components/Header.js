@@ -7,8 +7,7 @@ import React from 'react';
 // Header
 // ----------------------------------------------
 const Header = () => {
-  const logoArr = ['chart-down', 'chart-up'];
-  const logo = logoArr[Math.floor(Math.random() * logoArr.length)];
+  const logo = ['chart-down', 'chart-up'][Math.floor(Math.random() * 2)];
 
   return (
     <header className="header">

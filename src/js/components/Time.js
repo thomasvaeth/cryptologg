@@ -41,7 +41,7 @@ class Time extends Component {
       <section className="time section-padding">
         <div className="grid">
           <p className="time__text">
-            Warren Buffet said, “Buy, hold, and don't watch the market closely,” but the last time you checked was {this.state.time} ago.
+            Warren Buffet said, <a className="time__link" href="https://www.cnbc.com/2016/03/04/warren-buffett-buy-hold-and-dont-watch-too-closely.html" target="_blank">“Buy, hold, and don't watch the market closely,”</a> but the last time you checked was {this.state.time} ago.
           </p>
         </div>
       </section>
