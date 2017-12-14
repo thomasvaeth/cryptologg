@@ -1,6 +1,7 @@
 //----------------------------------------------   
 //  Main Styling Build
 //  
+//  Fonts:      Fonts, icons
 //  Tools:      Configs, variables
 //  Base:       Styles for base level elements
 //  Vendor:     Vendor specific styles
@@ -8,6 +9,11 @@
 //  Components: Modular components -> Most styles
 //  Utils:      Utilities, animations
 //---------------------------------------------- 
+
+//----------------------------------------------
+// Fonts: Fonts, icons
+//---------------------------------------------- 
+@import 'fonts/_circular';
 
 //----------------------------------------------
 // Tools: Main Config & Global Variables
