@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: $z-999;
+  z-index: $z-998;
 
   display: flex;
   align-items: center;
@@ -30,5 +30,11 @@
       display: block;
       width: 3em;
     }
+  }
+
+  &__popup {
+    font-weight: 700;
+    font-size: 1.5em;
+    cursor: pointer;
   }
 }

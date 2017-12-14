@@ -50,10 +50,12 @@
 //---------------------------------------------- 
 @import 'components/_crypto';
 @import 'components/_mast';
+@import 'components/_popup';
 @import 'components/_quote';
 @import 'components/_time';
 
 //----------------------------------------------   
 // Utils
 //---------------------------------------------- 
+@import 'utils/_animations-keyframes';
 @import 'utils/_helpers-grid';
