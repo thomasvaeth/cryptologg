@@ -19,9 +19,13 @@ class Header extends Component {
   componentDidMount() {
     document.addEventListener('keyup', e => {
       if (this.state.popup && e.which === 27) {
-        this.setState(prevState => ({
-          popup: !prevState.popup
-        }));
+        this.togglePopup();
+      }
+    });
+
+    this.popup.addEventListener('click', e => {
+      if (!this.popupContainer.contains(e.target)) {
+        this.togglePopup();
       }
     });
   }
@@ -41,17 +45,17 @@ class Header extends Component {
           </figure>
           <span className="header__popup" onClick={this.togglePopup}>About</span>
         </header>
-        <section className="popup">
+        <section className="popup" ref={popup => this.popup = popup}>
           <div className="popup__close" onClick={this.togglePopup}>
             <div className="popup__exit"></div>
           </div>
-          <div className="popup__container">
+          <div className="popup__container" ref={popupContainer => this.popupContainer = popupContainer}>
             <div className="popup__subcontainer section-padding">
               <span className="popup__emoji">🙋‍♂️</span>
             </div>
             <div className="popup__content">
               <p className="popup__text">
-                CryptoLogg was built by <a className="popup__link" href="http://thomasvaeth" target="_blank">Thomas Vaeth</a> in Seattle, Washington. 
+                CryptoLogg was built by <a className="popup__link" href="http://thomasvaeth.com" target="_blank">Thomas Vaeth</a> in Seattle, Washington. 
                 Thomas was feeling losses significantly more than gains and CryptoLogg is his way of coming to grip with his emotional liability.
               </p>
             </div>
