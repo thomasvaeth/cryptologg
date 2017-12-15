@@ -13,7 +13,7 @@ class Crypto extends Component {
 
     this.state = { cryptoValue: {} };
 
-    this.crypto = 'BTC,ETH,LTC,XRP,BCH,DASH';
+    this.crypto = 'BTC,ETH,LTC,XRP,IOT,DASH';
   }
 
   componentDidMount() {
@@ -57,8 +57,8 @@ class Crypto extends Component {
         title = 'Litecoin';
       } else if (value === 'XRP') {
         title = 'Ripple';
-      } else if (value === 'BCH') {
-        title = 'Bitcoin Cash';
+      } else if (value === 'IOT') {
+        title = 'IOTA';
       } else if (value === 'DASH') {
         title = 'Dash';
       }
