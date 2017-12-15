@@ -6,6 +6,7 @@ body {
   line-height: $base-lineheight;
   color: $color-alpha;
   background-color: $color-white;
+  -webkit-tap-highlight-color: transparent;
 }
 
 //----------------------------------------------

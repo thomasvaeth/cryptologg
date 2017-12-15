@@ -16,6 +16,16 @@ class Header extends Component {
     this.togglePopup = this.togglePopup.bind(this);
   }
 
+  componentDidMount() {
+    document.addEventListener('keyup', e => {
+      if (this.state.popup && e.which === 27) {
+        this.setState(prevState => ({
+          popup: !prevState.popup
+        }));
+      }
+    });
+  }
+
   togglePopup() {
     this.setState(prevState => ({
       popup: !prevState.popup
@@ -23,10 +33,8 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.state);
-
     return (
-      <div className={this.state.popup ? 'popup-open' : 'popup-closed'}>
+      <div className={this.state.popup ? 'popup-open' : ''}>
         <header className="header">
           <figure className="header__img">
             <img src={`assets/images/${this.logo}.png`} alt="CryptoLogg"/>
@@ -38,11 +46,15 @@ class Header extends Component {
             <div className="popup__exit"></div>
           </div>
           <div className="popup__container">
-            <div className="popup__img">
-              
+            <div className="popup__subcontainer">
+              <span className="popup__emoji">🙋‍♂️</span>
             </div>
             <div className="popup__content">
-
+              <p className="popup__text">
+                CryptoLogg was built by <a className="popup__link" href="http://thomasvaeth" target="_blank">Thomas Vaeth</a> in Seattle, Washington. 
+                Thomas built it because he was feeling losses significantly more than gains. 
+                This website was his way of coming to grip with his emotional liability.
+              </p>
             </div>
           </div>
         </section>

@@ -1,9 +1,25 @@
 //----------------------------------------------
-// Main
+// Footer
 //----------------------------------------------
-main {
-  margin: {
-    top: $header-height;
-    bottom: $header-height;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: $header-height;
+  padding: {
+    right: 0.5em;
+    left: 0.5em;
+  }
+
+  @media (min-width: $mq-small) {
+    padding: {
+      right: 1.5em;
+      left: 1.5em;
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 1.5em;
   }
 }

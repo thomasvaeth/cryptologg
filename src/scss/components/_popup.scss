@@ -19,18 +19,13 @@
   visibility: hidden;
   background-color: rgba($color-black, 0.9);
   opacity: 0;
-  transition: opacity 600ms ease-in-out;
+  transition: all 600ms ease-in-out;
 
   .popup-open & {
     z-index: 9999;
 
     visibility: visible;
     opacity: 1;
-  }
-
-  .popup-closed & {
-    visibility: visible;
-    opacity: 0;
   }
 
   &__open {
@@ -100,19 +95,18 @@
       & > * {
 
         &:first-child {
-          flex-basis: 55%;
-          max-width: 55%;
+          flex-basis: 45%;
+          max-width: 45%;
         }
 
         &:last-child {
-          flex-basis: 45%;
-          max-width: 45%;
+          flex-basis: 55%;
+          max-width: 55%;
         }
       }
     }
 
     @media (min-width: $mq-med) {
-      min-height: 34em;
       width: 80%;
     }
 
@@ -125,25 +119,36 @@
     }
   }
 
-  &__img {
-    display: none;
+  &__subcontainer {
+    @extend %flex-center;
 
-    @media (min-width: $mq-small) {
-      position: relative;
+    background-color: $color-lightgrey;
+  }
 
-      display: block;
-
-      background-color: $color-lightgrey;
-    }
+  &__emoji {
+    @extend .crypto__emoji;
   }
 
   &__content {
-    @extend %flex-center;
+    padding: 2em 1em;
 
-    flex-direction: column;
-
-    & > * {
-      width: 100%;
+    @media (min-width: $mq-small) {
+      padding: 4em 2em;
     }
+
+    @media (min-width: $mq-xlarge) {
+      padding: {
+        top: 6em;
+        bottom: 6em;
+      }
+    }
+  }
+
+  &__text {
+    font-size: 1.75em;
+  }
+
+  &__link {
+    @extend .time__link;
   }
 }

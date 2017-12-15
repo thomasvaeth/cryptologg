@@ -34927,6 +34927,10 @@ var _Time = __webpack_require__(177);
 
 var _Time2 = _interopRequireDefault(_Time);
 
+var _Footer = __webpack_require__(182);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34963,7 +34967,8 @@ var App = function (_Component) {
           _react2.default.createElement(_Mast2.default, null),
           _react2.default.createElement(_Crypto2.default, null),
           _react2.default.createElement(_Time2.default, null)
-        )
+        ),
+        _react2.default.createElement(_Footer2.default, null)
       );
     }
   }]);
@@ -35025,6 +35030,21 @@ var Header = function (_Component) {
   }
 
   _createClass(Header, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      document.addEventListener('keyup', function (e) {
+        if (_this2.state.popup && e.which === 27) {
+          _this2.setState(function (prevState) {
+            return {
+              popup: !prevState.popup
+            };
+          });
+        }
+      });
+    }
+  }, {
     key: 'togglePopup',
     value: function togglePopup() {
       this.setState(function (prevState) {
@@ -35036,11 +35056,9 @@ var Header = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.state);
-
       return _react2.default.createElement(
         'div',
-        { className: this.state.popup ? 'popup-open' : 'popup-closed' },
+        { className: this.state.popup ? 'popup-open' : '' },
         _react2.default.createElement(
           'header',
           { className: 'header' },
@@ -35066,8 +35084,30 @@ var Header = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'popup__container' },
-            _react2.default.createElement('div', { className: 'popup__img' }),
-            _react2.default.createElement('div', { className: 'popup__content' })
+            _react2.default.createElement(
+              'div',
+              { className: 'popup__subcontainer' },
+              _react2.default.createElement(
+                'span',
+                { className: 'popup__emoji' },
+                '\uD83D\uDE4B\u200D\u2642\uFE0F'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'popup__content' },
+              _react2.default.createElement(
+                'p',
+                { className: 'popup__text' },
+                'CryptoLogg was built by ',
+                _react2.default.createElement(
+                  'a',
+                  { className: 'popup__link', href: 'http://thomasvaeth', target: '_blank' },
+                  'Thomas Vaeth'
+                ),
+                ' in Seattle, Washington. Thomas built it because he was feeling losses significantly more than gains. This website was his way of coming to grip with his emotional liability.'
+              )
+            )
           )
         )
       );
@@ -35114,7 +35154,7 @@ var Mast = function Mast() {
       _react2.default.createElement(
         "p",
         { className: "mast__text" },
-        "CryptoLogg only shows the price change of cryptocurrencies since the last time you checked. This is to discourages you from checking the values of your investments often. \uD83D\uDCB8"
+        "CryptoLogg only shows the price change of cryptocurrencies since the last time you checked. This is to discourage you from checking the values of your investments often. \uD83D\uDCB8"
       )
     )
   );
@@ -36269,7 +36309,7 @@ var Time = function (_Component) {
             ),
             ' but the last time you checked was ',
             this.state.time,
-            ' ago.'
+            ' ago. \u23F3'
           )
         )
       );
@@ -36577,6 +36617,55 @@ webpackContext.id = 179;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 181 */,
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _moment = __webpack_require__(0);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// ----------------------------------------------
+// Footer
+// ----------------------------------------------
+// ----------------------------------------------
+// Imports
+// ----------------------------------------------
+var Footer = function Footer() {
+  var year = (0, _moment2.default)().year();
+
+  return _react2.default.createElement(
+    'footer',
+    { className: 'footer' },
+    _react2.default.createElement(
+      'span',
+      { className: 'footer__text' },
+      'Coded With Code in ',
+      year,
+      ' \uD83D\uDC68\u200D\uD83D\uDCBB'
+    )
+  );
+};
+
+// ----------------------------------------------
+// Exports
+// ----------------------------------------------
+exports.default = Footer;
 
 /***/ })
 /******/ ]);
