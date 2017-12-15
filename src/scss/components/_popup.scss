@@ -107,6 +107,7 @@
     }
 
     @media (min-width: $mq-med) {
+      min-height: $mq-small;
       width: 80%;
     }
 
@@ -130,6 +131,8 @@
   }
 
   &__content {
+    display: flex;
+    align-items: center;
     padding: 2em 1em;
 
     @media (min-width: $mq-small) {
@@ -145,10 +148,15 @@
   }
 
   &__text {
-    font-size: 1.75em;
+    font-size: 1.5em;
+
+    @media (min-width: $mq-small) {
+      font-size: 1.75em;
+    }
   }
 
   &__link {
-    @extend .time__link;
+    color: $color-alpha;
+    text-decoration: none;
   }
 }

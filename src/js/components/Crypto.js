@@ -13,7 +13,7 @@ class Crypto extends Component {
 
     this.state = { cryptoValue: {} };
 
-    this.crypto = 'BTC,ETH,LTC';
+    this.crypto = 'BTC,ETH,LTC,XRP,IOTA,DASH';
   }
 
   componentDidMount() {
@@ -42,7 +42,7 @@ class Crypto extends Component {
       const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
       const currentValue = this.state.cryptoValue[value].USD;
       let title = 'Bitcoin';
-      let emoji = ['🤔', '😶'][Math.floor(Math.random() * 2)];
+      let emoji = ['🤔', '😶', '🙃'][Math.floor(Math.random() * 2)];
       let text = '$0.00';
 
       if (value === 'BTC') {
@@ -51,18 +51,24 @@ class Crypto extends Component {
         title = 'Ethereum';
       } else if (value === 'LTC') {
         title = 'Litecoin';
+      } else if (value === 'XRP') {
+        title = 'Ripple';
+      } else if (value === 'IOTA') {
+        title = 'IOTA';
+      } else if (value === 'DASH') {
+        title = 'Dash';
       }
 
       if (lastValue) {
         const changeValue = Number(currentValue - lastValue).toFixed(2);
 
         if (changeValue > 0) {
-          emoji = ['🤑', '😎'][Math.floor(Math.random() * 2)];
+          emoji = ['🤑', '😎', '😋', '😍'][Math.floor(Math.random() * 2)];
         } else if (changeValue < 0) {
-          emoji = ['😵', '😥', '🤢'][Math.floor(Math.random() * 3)];
+          emoji = ['😵', '😥', '🤢', '🙄', '😤'][Math.floor(Math.random() * 3)];
         }
 
-        text = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${changeValue}`;
+        text = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${Number(Math.abs(changeValue)).toFixed(2)}`;
       }
 
       localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
@@ -82,8 +88,10 @@ class Crypto extends Component {
   render() {
     return (
       <section className="crypto section-padding">
-        <div className="crypto__container">
-          {this.cards()}
+        <div className="grid-xlarge">
+          <div className="crypto__container">
+            {this.cards()}
+          </div>
         </div>
       </section>
     );

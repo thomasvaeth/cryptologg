@@ -20,6 +20,10 @@
 
   &__text {
     font-weight: 700;
-    font-size: 1.5em;
+    font-size: 1.25em;
+
+    @media (min-width: $mq-small) {
+      font-size: 1.5em;
+    }
   }
 }

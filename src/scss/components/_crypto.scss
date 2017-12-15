@@ -9,14 +9,19 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-column-gap: 1em;
-      grid-template-rows: none;
+      grid-template-rows: 2;
+      grid-row-gap: 1em;
     }
   }
 
   &__subcontainer {
+    @include nth-animation-delay(6, $delay: 300ms);
+
     position: relative;
 
     padding-top: 100%;
+
+    animation: fade-in-up ease-in-out 1s both;
 
     &:not(:last-child) {
 

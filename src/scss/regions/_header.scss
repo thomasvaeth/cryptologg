@@ -17,6 +17,8 @@
     left: 0.5em;
   }
 
+  animation: fade-in ease-in-out 600ms both;
+
   @media (min-width: $mq-small) {
     padding: {
       right: 1.5em;
@@ -28,13 +30,21 @@
 
     img {
       display: block;
-      width: 3em;
+      width: 2.5em;
+
+      @media (min-width: $mq-small) {
+        width: 3em;
+      }
     }
   }
 
   &__popup {
     font-weight: 700;
-    font-size: 1.5em;
+    font-size: 1.25em;
     cursor: pointer;
+
+    @media (min-width: $mq-small) {
+      font-size: 1.5em;
+    }
   }
 }

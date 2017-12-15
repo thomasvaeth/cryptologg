@@ -35086,7 +35086,7 @@ var Header = function (_Component) {
             { className: 'popup__container' },
             _react2.default.createElement(
               'div',
-              { className: 'popup__subcontainer' },
+              { className: 'popup__subcontainer section-padding' },
               _react2.default.createElement(
                 'span',
                 { className: 'popup__emoji' },
@@ -35213,7 +35213,7 @@ var Crypto = function (_Component) {
 
     _this.state = { cryptoValue: {} };
 
-    _this.crypto = 'BTC,ETH,LTC';
+    _this.crypto = 'BTC,ETH,LTC,XRP,IOTA,DASH';
     return _this;
   }
 
@@ -35251,7 +35251,7 @@ var Crypto = function (_Component) {
         var lastValue = localStorage.getItem(currencyFormat + 'LastValue');
         var currentValue = _this4.state.cryptoValue[value].USD;
         var title = 'Bitcoin';
-        var emoji = ['🤔', '😶'][Math.floor(Math.random() * 2)];
+        var emoji = ['🤔', '😶', '🙃'][Math.floor(Math.random() * 2)];
         var text = '$0.00';
 
         if (value === 'BTC') {
@@ -35260,18 +35260,24 @@ var Crypto = function (_Component) {
           title = 'Ethereum';
         } else if (value === 'LTC') {
           title = 'Litecoin';
+        } else if (value === 'XRP') {
+          title = 'Ripple';
+        } else if (value === 'IOTA') {
+          title = 'IOTA';
+        } else if (value === 'DASH') {
+          title = 'Dash';
         }
 
         if (lastValue) {
           var changeValue = Number(currentValue - lastValue).toFixed(2);
 
           if (changeValue > 0) {
-            emoji = ['🤑', '😎'][Math.floor(Math.random() * 2)];
+            emoji = ['🤑', '😎', '😋', '😍'][Math.floor(Math.random() * 2)];
           } else if (changeValue < 0) {
-            emoji = ['😵', '😥', '🤢'][Math.floor(Math.random() * 3)];
+            emoji = ['😵', '😥', '🤢', '🙄', '😤'][Math.floor(Math.random() * 3)];
           }
 
-          text = changeValue < 0 ? '\u2013$' + Number(Math.abs(changeValue)).toFixed(2) : '$' + changeValue;
+          text = changeValue < 0 ? '\u2013$' + Number(Math.abs(changeValue)).toFixed(2) : '$' + Number(Math.abs(changeValue)).toFixed(2);
         }
 
         localStorage.setItem(currencyFormat + 'LastValue', currentValue);
@@ -35309,8 +35315,12 @@ var Crypto = function (_Component) {
         { className: 'crypto section-padding' },
         _react2.default.createElement(
           'div',
-          { className: 'crypto__container' },
-          this.cards()
+          { className: 'grid-xlarge' },
+          _react2.default.createElement(
+            'div',
+            { className: 'crypto__container' },
+            this.cards()
+          )
         )
       );
     }
@@ -36290,8 +36300,35 @@ var Time = function (_Component) {
       this.setState({ time: lastChecked ? timeDifference : this.state.time });
     }
   }, {
+    key: 'quote',
+    value: function quote() {
+      var quotes = [{
+        author: 'Warren Buffet',
+        quote: 'Buy, hold, and don\'t watch the market closely'
+      }, {
+        author: 'Nicholas Taleb',
+        quote: 'Over a short time increment, one observes the variability of the portfolio, not the returns'
+      }, {
+        author: 'Allan Mecham',
+        quote: 'Continual performance monitoring is not good for your mental health or for your portfolio’s well-being'
+      }, {
+        author: 'Nicholas Taleb',
+        quote: 'Daily exposure to such high degrees of randomness without much control will have physiological effects on humans'
+      }, {
+        author: 'Daniel Kahneman',
+        quote: 'Losses look larger than gains'
+      }, {
+        author: 'Allan Mecham',
+        quote: 'Almost all investors experience more pain and anguish from losses than they do pleasure from gains'
+      }];
+
+      return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var quote = this.quote();
+
       return _react2.default.createElement(
         'section',
         { className: 'time section-padding' },
@@ -36301,13 +36338,10 @@ var Time = function (_Component) {
           _react2.default.createElement(
             'p',
             { className: 'time__text' },
-            'Warren Buffet said, ',
-            _react2.default.createElement(
-              'a',
-              { className: 'time__link', href: 'https://www.cnbc.com/2016/03/04/warren-buffett-buy-hold-and-dont-watch-too-closely.html', target: '_blank' },
-              '\u201CBuy, hold, and don\'t watch the market closely,\u201D'
-            ),
-            ' but the last time you checked was ',
+            quote.author,
+            ' said, \u201C',
+            quote.quote,
+            ',\u201D but the last time you checked was ',
             this.state.time,
             ' ago. \u23F3'
           )

@@ -6,9 +6,4 @@
   &__text {
     @extend .mast__text;
   }
-
-  &__link {
-    color: $color-alpha;
-    text-decoration: none;
-  }
 }

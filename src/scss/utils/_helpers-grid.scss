@@ -45,31 +45,16 @@ section {
   }
 }
 
-// .grid-large {
-//   @extend %auto-margin;
+.grid-xlarge {
+  @extend %auto-margin;
 
-//   width: 100%;
-//   max-width: $max-width--lg;
+  width: 100%;
 
-//   @media (min-width: $mq-med) {
-//     width: 80%;
-//   }
+  @media (min-width: $mq-med) {
+    width: 95%;
+  }
 
-//   @media (min-width: $mq-xlarge) {
-//     width: 65%;
-//   }
-// }
-
-// .grid-xlarge {
-//   @extend %auto-margin;
-
-//   width: 100%;
-
-//   @media (min-width: $mq-med) {
-//     width: 95%;
-//   }
-
-//   @media (min-width: $mq-xlarge) {
-//     width: 80%;
-//   }
-// }
+  @media (min-width: $mq-xlarge) {
+    width: 80%;
+  }
+}

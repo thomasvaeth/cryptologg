@@ -1,0 +1,15 @@
+//---------------------------------------------- 
+//  Animation Delay - nth-animation-delay()
+//  @description: Animation delay to child elements
+//  @param:       $items: [12] - Items
+//  @param:       $time: [0.2s] - Time 
+//----------------------------------------------
+@mixin nth-animation-delay($items: 12, $time: 200ms, $delay: 0s) {
+  
+  @for $i from 1 through $items {
+    
+    &:nth-child(#{$i}) {   
+      animation-delay: ($time * $i) + $delay; 
+    }
+  }
+}

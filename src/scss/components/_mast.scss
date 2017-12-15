@@ -5,6 +5,11 @@
   margin-top: $header-height;
 
   &__text {
-    font-size: 2em;
+    font-size: 1.75em;
+    animation: fade-in-up ease-in-out 1s both 300ms;
+
+    @media (min-width: $mq-small) {
+      font-size: 2em;
+    }
   }
 }

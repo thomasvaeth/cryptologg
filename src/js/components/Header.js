@@ -46,7 +46,7 @@ class Header extends Component {
             <div className="popup__exit"></div>
           </div>
           <div className="popup__container">
-            <div className="popup__subcontainer">
+            <div className="popup__subcontainer section-padding">
               <span className="popup__emoji">🙋‍♂️</span>
             </div>
             <div className="popup__content">
