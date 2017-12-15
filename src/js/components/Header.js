@@ -53,7 +53,7 @@ class Header extends Component {
               <p className="popup__text">
                 CryptoLogg was built by <a className="popup__link" href="http://thomasvaeth" target="_blank">Thomas Vaeth</a> in Seattle, Washington. 
                 Thomas built it because he was feeling losses significantly more than gains. 
-                This website was his way of coming to grip with his emotional liability.
+                CryptoLogg is his way of coming to grip with his emotional liability.
               </p>
             </div>
           </div>

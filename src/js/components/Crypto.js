@@ -13,7 +13,7 @@ class Crypto extends Component {
 
     this.state = { cryptoValue: {} };
 
-    this.crypto = 'BTC,ETH,LTC,XRP,IOTA,DASH';
+    this.crypto = 'BTC,ETH,LTC,XRP,BCH,DASH';
   }
 
   componentDidMount() {
@@ -41,9 +41,13 @@ class Crypto extends Component {
       const currencyFormat = value.toLowerCase();
       const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
       const currentValue = this.state.cryptoValue[value].USD;
-      let title = 'Bitcoin';
-      let emoji = ['🤔', '😶', '🙃'][Math.floor(Math.random() * 2)];
-      let text = '$0.00';
+      const positiveEmoji = ['🤑', '😎', '😋', '😍'];
+      const neutralEmoji =  ['🤔', '😶', '🙃'];
+      const negativeEmoji = ['😵', '😥', '🤢', '🙄', '😤'];
+      let title = '';
+      let emoji = neutralEmoji[Math.floor(Math.random() * neutralEmoji.length)];
+
+      localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
 
       if (value === 'BTC') {
         title = 'Bitcoin';
@@ -53,25 +57,33 @@ class Crypto extends Component {
         title = 'Litecoin';
       } else if (value === 'XRP') {
         title = 'Ripple';
-      } else if (value === 'IOTA') {
-        title = 'IOTA';
+      } else if (value === 'BCH') {
+        title = 'Bitcoin Cash';
       } else if (value === 'DASH') {
         title = 'Dash';
       }
 
-      if (lastValue) {
-        const changeValue = Number(currentValue - lastValue).toFixed(2);
-
-        if (changeValue > 0) {
-          emoji = ['🤑', '😎', '😋', '😍'][Math.floor(Math.random() * 2)];
-        } else if (changeValue < 0) {
-          emoji = ['😵', '😥', '🤢', '🙄', '😤'][Math.floor(Math.random() * 3)];
-        }
-
-        text = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${Number(Math.abs(changeValue)).toFixed(2)}`;
+      if (!lastValue) {
+        return (
+          <div className="crypto__subcontainer" key={value}>
+            <div className="crypto__content">
+              <span className="crypto__emoji">{positiveEmoji[Math.floor(Math.random() * positiveEmoji.length)]}</span>
+              <h2 className="crypto__title">{title}</h2>
+              <span className="crypto__value">{`$${Number(currentValue).toFixed(2)}`}</span>
+            </div>
+          </div>
+        );
       }
 
-      localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
+      const changeValue = Number(currentValue - lastValue).toFixed(2);
+
+      if (changeValue > 0) {
+        emoji = positiveEmoji[Math.floor(Math.random() * positiveEmoji.length)];
+      } else if (changeValue < 0) {
+        emoji = negativeEmoji[Math.floor(Math.random() * negativeEmoji.length)];
+      }
+
+      const text = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${Number(Math.abs(changeValue)).toFixed(2)}`;
 
       return (
         <div className="crypto__subcontainer" key={value}>

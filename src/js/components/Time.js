@@ -74,7 +74,7 @@ class Time extends Component {
       <section className="time section-padding">
         <div className="grid">
           <p className="time__text">
-            {quote.author} said, “{quote.quote},” but the last time you checked was {this.state.time} ago. ⏳
+            {quote.author} said, “{quote.quote},” but the last time you checked your portfolio was {this.state.time} ago. ⏳
           </p>
         </div>
       </section>

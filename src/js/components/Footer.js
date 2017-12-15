@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <span className="footer__text">Coded With Code in {year} 👨‍💻</span>
+      <span className="footer__text">Coded With Code in {year}. 👨‍💻</span>
     </footer>
   );
 }

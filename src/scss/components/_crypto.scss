@@ -2,6 +2,7 @@
 // Crypto
 //---------------------------------------------- 
 .crypto {
+  background-color: $color-lightgrey;
 
   &__container {
 
@@ -43,6 +44,7 @@
     width: 100%;
     padding: 4em 1em;
 
+    background-color: $color-white;
     border: 3px solid $color-alpha;
   }
 

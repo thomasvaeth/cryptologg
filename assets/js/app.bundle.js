@@ -35105,7 +35105,7 @@ var Header = function (_Component) {
                   { className: 'popup__link', href: 'http://thomasvaeth', target: '_blank' },
                   'Thomas Vaeth'
                 ),
-                ' in Seattle, Washington. Thomas built it because he was feeling losses significantly more than gains. This website was his way of coming to grip with his emotional liability.'
+                ' in Seattle, Washington. Thomas built it because he was feeling losses significantly more than gains. CryptoLogg is his way of coming to grip with his emotional liability.'
               )
             )
           )
@@ -35213,7 +35213,7 @@ var Crypto = function (_Component) {
 
     _this.state = { cryptoValue: {} };
 
-    _this.crypto = 'BTC,ETH,LTC,XRP,IOTA,DASH';
+    _this.crypto = 'BTC,ETH,LTC,XRP,BCH,DASH';
     return _this;
   }
 
@@ -35250,9 +35250,13 @@ var Crypto = function (_Component) {
         var currencyFormat = value.toLowerCase();
         var lastValue = localStorage.getItem(currencyFormat + 'LastValue');
         var currentValue = _this4.state.cryptoValue[value].USD;
-        var title = 'Bitcoin';
-        var emoji = ['🤔', '😶', '🙃'][Math.floor(Math.random() * 2)];
-        var text = '$0.00';
+        var positiveEmoji = ['🤑', '😎', '😋', '😍'];
+        var neutralEmoji = ['🤔', '😶', '🙃'];
+        var negativeEmoji = ['😵', '😥', '🤢', '🙄', '😤'];
+        var title = '';
+        var emoji = neutralEmoji[Math.floor(Math.random() * neutralEmoji.length)];
+
+        localStorage.setItem(currencyFormat + 'LastValue', currentValue);
 
         if (value === 'BTC') {
           title = 'Bitcoin';
@@ -35262,25 +35266,47 @@ var Crypto = function (_Component) {
           title = 'Litecoin';
         } else if (value === 'XRP') {
           title = 'Ripple';
-        } else if (value === 'IOTA') {
-          title = 'IOTA';
+        } else if (value === 'BCH') {
+          title = 'Bitcoin Cash';
         } else if (value === 'DASH') {
           title = 'Dash';
         }
 
-        if (lastValue) {
-          var changeValue = Number(currentValue - lastValue).toFixed(2);
-
-          if (changeValue > 0) {
-            emoji = ['🤑', '😎', '😋', '😍'][Math.floor(Math.random() * 2)];
-          } else if (changeValue < 0) {
-            emoji = ['😵', '😥', '🤢', '🙄', '😤'][Math.floor(Math.random() * 3)];
-          }
-
-          text = changeValue < 0 ? '\u2013$' + Number(Math.abs(changeValue)).toFixed(2) : '$' + Number(Math.abs(changeValue)).toFixed(2);
+        if (!lastValue) {
+          return _react2.default.createElement(
+            'div',
+            { className: 'crypto__subcontainer', key: value },
+            _react2.default.createElement(
+              'div',
+              { className: 'crypto__content' },
+              _react2.default.createElement(
+                'span',
+                { className: 'crypto__emoji' },
+                positiveEmoji[Math.floor(Math.random() * positiveEmoji.length)]
+              ),
+              _react2.default.createElement(
+                'h2',
+                { className: 'crypto__title' },
+                title
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: 'crypto__value' },
+                '$' + Number(currentValue).toFixed(2)
+              )
+            )
+          );
         }
 
-        localStorage.setItem(currencyFormat + 'LastValue', currentValue);
+        var changeValue = Number(currentValue - lastValue).toFixed(2);
+
+        if (changeValue > 0) {
+          emoji = positiveEmoji[Math.floor(Math.random() * positiveEmoji.length)];
+        } else if (changeValue < 0) {
+          emoji = negativeEmoji[Math.floor(Math.random() * negativeEmoji.length)];
+        }
+
+        var text = changeValue < 0 ? '\u2013$' + Number(Math.abs(changeValue)).toFixed(2) : '$' + Number(Math.abs(changeValue)).toFixed(2);
 
         return _react2.default.createElement(
           'div',
@@ -36341,7 +36367,7 @@ var Time = function (_Component) {
             quote.author,
             ' said, \u201C',
             quote.quote,
-            ',\u201D but the last time you checked was ',
+            ',\u201D but the last time you checked your portfolio was ',
             this.state.time,
             ' ago. \u23F3'
           )
@@ -36691,7 +36717,7 @@ var Footer = function Footer() {
       { className: 'footer__text' },
       'Coded With Code in ',
       year,
-      ' \uD83D\uDC68\u200D\uD83D\uDCBB'
+      '. \uD83D\uDC68\u200D\uD83D\uDCBB'
     )
   );
 };
