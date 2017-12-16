@@ -46,7 +46,7 @@ class Header extends Component {
           <span className="header__popup" onClick={this.togglePopup}>About</span>
         </header>
         <section className="popup" ref={popup => this.popup = popup}>
-          <div className="popup__close" onClick={this.togglePopup}>
+          <div className="popup__close">
             <div className="popup__exit"></div>
           </div>
           <div className="popup__container" ref={popupContainer => this.popupContainer = popupContainer}>
