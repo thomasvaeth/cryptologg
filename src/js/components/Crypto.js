@@ -14,6 +14,7 @@ class Crypto extends Component {
     this.state = { cryptoValue: {} };
 
     this.crypto = 'BTC,ETH,LTC,XRP,IOT,DASH';
+    this.cryptoArr = ['Bitcoin', 'Ethereum', 'Litecoin', 'Ripple', 'IOTA', 'Dash'];
   }
 
   componentDidMount() {
@@ -37,31 +38,17 @@ class Crypto extends Component {
   }
 
   cards() {
-    return Object.keys(this.state.cryptoValue).map(value => {
+    return Object.keys(this.state.cryptoValue).map((value, idx) => {
       const currencyFormat = value.toLowerCase();
       const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
       const currentValue = this.state.cryptoValue[value].USD;
+      const title = this.cryptoArr[idx];
       const positiveEmoji = ['🤑', '😎', '😋', '😍'];
       const neutralEmoji =  ['🤔', '😶', '🙃'];
       const negativeEmoji = ['😵', '😥', '🤢', '🙄', '😤'];
-      let title = '';
       let emoji = neutralEmoji[Math.floor(Math.random() * neutralEmoji.length)];
 
       localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
-
-      if (value === 'BTC') {
-        title = 'Bitcoin';
-      } else if (value === 'ETH') {
-        title = 'Ethereum';
-      } else if (value === 'LTC') {
-        title = 'Litecoin';
-      } else if (value === 'XRP') {
-        title = 'Ripple';
-      } else if (value === 'IOT') {
-        title = 'IOTA';
-      } else if (value === 'DASH') {
-        title = 'Dash';
-      }
 
       if (!lastValue) {
         return (
@@ -75,7 +62,7 @@ class Crypto extends Component {
         );
       }
 
-      const changeValue = Number(currentValue - lastValue).toFixed(2);
+      const changeValue = currentValue - lastValue;
 
       if (changeValue > 0) {
         emoji = positiveEmoji[Math.floor(Math.random() * positiveEmoji.length)];
