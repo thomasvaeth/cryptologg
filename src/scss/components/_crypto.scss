@@ -65,4 +65,44 @@
 
     font-size: 1.5em;
   }
+
+  &__format {
+    @extend %flex-center;
+
+    padding-top: 1em;
+
+    @media (min-width: $mq-small) {
+      padding-top: 2em;
+    }
+
+    @media (min-width: $mq-xlarge) {
+      padding-top: 3em;
+    }
+  }
+
+  &__button {
+    @extend %flex-center;
+
+    height: 3em;
+    width: 3em;
+
+    background-color: $color-white;
+    border: 3px solid $color-alpha;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+
+    &:first-child {
+      margin-right: 0.5em;
+    }
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-alpha;
+    }
+
+    span {
+      font-weight: 700;
+      font-size: 1.25em;
+    }
+  }
 }

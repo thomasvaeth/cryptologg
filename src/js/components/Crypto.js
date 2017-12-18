@@ -11,7 +11,10 @@ class Crypto extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { cryptoValue: {} };
+    this.state = { 
+      cryptoValue: {}, 
+      currency: true
+    };
 
     this.crypto = 'BTC,ETH,LTC,XRP,IOT,DASH';
     this.cryptoArr = ['Bitcoin', 'Ethereum', 'Litecoin', 'Ripple', 'IOTA', 'Dash'];
@@ -37,51 +40,59 @@ class Crypto extends Component {
       });
   }
 
-  cards() {
+  marketChange() {
+    const getEmoji = emojiArr => emojiArr[Math.floor(Math.random() * emojiArr.length)];
+    const toCurrency = num => `$${Number(Math.abs(num)).toFixed(2)}`;
+    const toPercentage = num => `${Number(Math.abs(num)).toFixed(4)}%`;
+
+    const positiveEmoji = ['🤑', '😎', '😋', '😍'];
+    const neutralEmoji =  ['🤔', '😶', '🙃'];
+    const negativeEmoji = ['😵', '😥', '🤢', '🙄', '😤'];
+
     return Object.keys(this.state.cryptoValue).map((value, idx) => {
       const currencyFormat = value.toLowerCase();
       const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
       const currentValue = this.state.cryptoValue[value].USD;
       const title = this.cryptoArr[idx];
-      const positiveEmoji = ['🤑', '😎', '😋', '😍'];
-      const neutralEmoji =  ['🤔', '😶', '🙃'];
-      const negativeEmoji = ['😵', '😥', '🤢', '🙄', '😤'];
-      let emoji = neutralEmoji[Math.floor(Math.random() * neutralEmoji.length)];
+      let emoji = '';
+      let text = '';
 
       localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
 
       if (!lastValue) {
-        return (
-          <div className="crypto__subcontainer" key={value}>
-            <div className="crypto__content">
-              <span className="crypto__emoji">{positiveEmoji[Math.floor(Math.random() * positiveEmoji.length)]}</span>
-              <h2 className="crypto__title">{title}</h2>
-              <span className="crypto__value">{`$${Number(currentValue).toFixed(2)}`}</span>
-            </div>
-          </div>
-        );
+        const firstVisitEmoji = getEmoji(positiveEmoji);
+        const firstVisitText = toCurrency(currentValue);
+
+        return this.cards(value, firstVisitEmoji, title, firstVisitText);
       }
 
-      const changeValue = currentValue - lastValue;
+      const changeValue = this.state.currency ? currentValue - lastValue : ((currentValue - lastValue) / lastValue) * 100;
 
       if (changeValue > 0) {
-        emoji = positiveEmoji[Math.floor(Math.random() * positiveEmoji.length)];
+        emoji = getEmoji(positiveEmoji);
+        text = this.state.currency ? toCurrency(changeValue) : toPercentage(changeValue);
       } else if (changeValue < 0) {
-        emoji = negativeEmoji[Math.floor(Math.random() * negativeEmoji.length)];
+        emoji = getEmoji(negativeEmoji);
+        text = this.state.currency ? `–${toCurrency(changeValue)}` : `-${toPercentage(changeValue)}`;
+      } else {
+        emoji = getEmoji(neutralEmoji);
+        text = this.state.currency ? toCurrency(0) : '0%';
       }
 
-      const text = changeValue < 0 ? `–$${Number(Math.abs(changeValue)).toFixed(2)}` : `$${Number(Math.abs(changeValue)).toFixed(2)}`;
-
-      return (
-        <div className="crypto__subcontainer" key={value}>
-          <div className="crypto__content">
-            <span className="crypto__emoji">{emoji}</span>
-            <h2 className="crypto__title">{title}</h2>
-            <span className="crypto__value">{text}</span>
-          </div>
-        </div>
-      );
+      return this.cards(value, emoji, title, text);
     });
+  }
+
+  cards(value, emoji, title, text) {
+    return (
+      <div className="crypto__subcontainer" key={value}>
+        <div className="crypto__content">
+          <span className="crypto__emoji">{emoji}</span>
+          <h2 className="crypto__title">{title}</h2>
+          <span className="crypto__value">{text}</span>
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -89,7 +100,15 @@ class Crypto extends Component {
       <section className="crypto section-padding">
         <div className="grid-xlarge">
           <div className="crypto__container">
-            {this.cards()}
+            {this.marketChange()}
+          </div>
+          <div className="crypto__format">
+            <span className="crypto__button">
+              <span>$</span>
+            </span>
+            <span className="crypto__button">
+              <span>%</span>
+            </span>
           </div>
         </div>
       </section>
