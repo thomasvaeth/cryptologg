@@ -6,6 +6,7 @@ import Header from './Header';
 import Mast from './Mast';
 import Crypto from './Crypto';
 import Time from './Time';
+import Popup from './Popup';
 import Footer from './Footer';
 
 // ----------------------------------------------
@@ -20,6 +21,7 @@ class App extends Component {
           <Mast />
           <Crypto />
           <Time />
+          <Popup />
         </main>
         <Footer />
       </div>

@@ -21,7 +21,7 @@
   opacity: 0;
   transition: all 600ms ease-in-out;
 
-  .popup-open & {
+  &.popup-open {
     z-index: 9999;
 
     visibility: visible;
@@ -29,7 +29,19 @@
   }
 
   &__open {
-    cursor: pointer;
+    @extend .header;
+
+    justify-content: flex-end;
+
+    & > span {
+      font-weight: 700;
+      font-size: 1.25em;
+      cursor: pointer;
+
+      @media (min-width: $mq-small) {
+        font-size: 1.5em;
+      }
+    }
   }
 
   &__close {
@@ -48,38 +60,38 @@
       top: 1.5em;
       right: 1.5em;
     }
-  }
 
-  &__exit {
-    position: absolute;
-    top: 1em;
-    z-index: 1;
-
-    display: block;
-   
-    cursor: pointer;
-
-    &:after, 
-    &:before {
-      content: "";
+    & > div {
       position: absolute;
-      top: 0;
-      z-index: -1;
-      
+      top: 1em;
+      z-index: 1;
+
       display: block;
-      height: 1px;
-      width: 1.555555rem;
+     
+      cursor: pointer;
 
-      background-color: $color-white;
-      zoom: 1;
-    }
+      &:after, 
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        
+        display: block;
+        height: 1px;
+        width: 1.555555rem;
 
-    &:after {
-      transform: rotate(45deg);
-    }
+        background-color: $color-white;
+        zoom: 1;
+      }
 
-    &:before {
-      transform: rotate(-45deg);
+      &:after {
+        transform: rotate(45deg);
+      }
+
+      &:before {
+        transform: rotate(-45deg);
+      }
     }
   }
 
