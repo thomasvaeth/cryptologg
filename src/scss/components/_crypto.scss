@@ -2,7 +2,15 @@
 // Crypto
 //---------------------------------------------- 
 .crypto {
-  background-color: $color-lightgrey;
+  transition: background-color 300ms ease-in-out;
+
+  &--currency {
+    background-color: $color-lightgrey;
+  }
+
+  &--percentage {
+    background-color: $color-alpha;
+  }
 
   &__container {
 
@@ -45,7 +53,16 @@
     padding: 4em 1em;
 
     background-color: $color-white;
-    border: 3px solid $color-alpha;
+    border: 3px solid;
+    transition: border-color 300ms ease-in-out;
+
+    .crypto--currency & {
+      border-color: $color-alpha;
+    }
+
+    .crypto--percentage & {
+      border-color: $color-beta;
+    }
   }
 
   &__emoji {
@@ -87,17 +104,36 @@
     width: 3em;
 
     background-color: $color-white;
-    border: 3px solid $color-alpha;
+    border: 3px solid;
     cursor: pointer;
     transition: all 200ms ease-in-out;
+
+    .crypto--currency & {
+        border-color: $color-alpha;
+      }
+
+      .crypto--percentage & {
+        border-color: $color-beta;
+      }
 
     &:first-child {
       margin-right: 0.5em;
     }
 
-    &:hover {
-      color: $color-white;
-      background-color: $color-alpha;
+    &:hover,
+    &:active,
+    &:focus,
+    &.active {
+
+      .crypto--currency & {
+        color: $color-white;
+        background-color: $color-alpha;
+      }
+
+      .crypto--percentage & {
+        color: $color-alpha;
+        background-color: $color-beta;
+      }
     }
 
     span {

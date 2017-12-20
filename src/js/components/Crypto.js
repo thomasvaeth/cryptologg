@@ -16,6 +16,8 @@ class Crypto extends Component {
       currency: true
     };
 
+    this.toggleCurrency = this.toggleCurrency.bind(this);
+
     this.crypto = 'BTC,ETH,LTC,XRP,IOT,DASH';
     this.cryptoArr = ['Bitcoin', 'Ethereum', 'Litecoin', 'Ripple', 'IOTA', 'Dash'];
   }
@@ -109,18 +111,24 @@ class Crypto extends Component {
     );
   }
 
+  toggleCurrency() {
+    this.setState(prevState => ({
+      currency: !prevState.currency
+    }));
+  }
+
   render() {
     return (
-      <section className="crypto section-padding">
+      <section className={`crypto section-padding ${this.state.currency ? 'crypto--currency' : 'crypto--percentage'}`}>
         <div className="grid-xlarge">
           <div className="crypto__container">
             {this.marketChange()}
           </div>
           <div className="crypto__format">
-            <span className="crypto__button" onClick={() => this.setState({ currency: true })}>
+            <span className={`crypto__button ${this.state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
               <span>$</span>
             </span>
-            <span className="crypto__button" onClick={() => this.setState({ currency: false })}>
+            <span className={`crypto__button ${!this.state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
               <span>%</span>
             </span>
           </div>

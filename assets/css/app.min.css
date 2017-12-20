@@ -545,7 +545,12 @@ body {
         width: 3em; } }
 
 .crypto {
-  background-color: #f8f8f8; }
+  -webkit-transition: background-color 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out; }
+  .crypto--currency {
+    background-color: #f8f8f8; }
+  .crypto--percentage {
+    background-color: #001856; }
   @media (min-width: 32em) {
     .crypto__container {
       display: grid;
@@ -591,7 +596,13 @@ body {
     width: 100%;
     padding: 4em 1em;
     background-color: #fff;
-    border: 3px solid #001856; }
+    border: 3px solid;
+    -webkit-transition: border-color 300ms ease-in-out;
+    transition: border-color 300ms ease-in-out; }
+    .crypto--currency .crypto__content {
+      border-color: #001856; }
+    .crypto--percentage .crypto__content {
+      border-color: #d6f1fc; }
   .crypto__emoji, .popup__emoji {
     display: block;
     font-size: 2.5em;
@@ -614,15 +625,22 @@ body {
     height: 3em;
     width: 3em;
     background-color: #fff;
-    border: 3px solid #001856;
+    border: 3px solid;
     cursor: pointer;
     -webkit-transition: all 200ms ease-in-out;
     transition: all 200ms ease-in-out; }
+    .crypto--currency .crypto__button {
+      border-color: #001856; }
+    .crypto--percentage .crypto__button {
+      border-color: #d6f1fc; }
     .crypto__button:first-child {
       margin-right: 0.5em; }
-    .crypto__button:hover {
+    .crypto--currency .crypto__button:hover, .crypto--currency .crypto__button:active, .crypto--currency .crypto__button:focus, .crypto--currency .crypto__button.active {
       color: #fff;
       background-color: #001856; }
+    .crypto--percentage .crypto__button:hover, .crypto--percentage .crypto__button:active, .crypto--percentage .crypto__button:focus, .crypto--percentage .crypto__button.active {
+      color: #001856;
+      background-color: #d6f1fc; }
     .crypto__button span {
       font-weight: 700;
       font-size: 1.25em; }

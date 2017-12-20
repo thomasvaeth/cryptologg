@@ -35126,6 +35126,8 @@ var Crypto = function (_Component) {
       currency: true
     };
 
+    _this.toggleCurrency = _this.toggleCurrency.bind(_this);
+
     _this.crypto = 'BTC,ETH,LTC,XRP,IOT,DASH';
     _this.cryptoArr = ['Bitcoin', 'Ethereum', 'Litecoin', 'Ripple', 'IOTA', 'Dash'];
     return _this;
@@ -35249,13 +35251,20 @@ var Crypto = function (_Component) {
       );
     }
   }, {
+    key: 'toggleCurrency',
+    value: function toggleCurrency() {
+      this.setState(function (prevState) {
+        return {
+          currency: !prevState.currency
+        };
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this5 = this;
-
       return _react2.default.createElement(
         'section',
-        { className: 'crypto section-padding' },
+        { className: 'crypto section-padding ' + (this.state.currency ? 'crypto--currency' : 'crypto--percentage') },
         _react2.default.createElement(
           'div',
           { className: 'grid-xlarge' },
@@ -35269,9 +35278,7 @@ var Crypto = function (_Component) {
             { className: 'crypto__format' },
             _react2.default.createElement(
               'span',
-              { className: 'crypto__button', onClick: function onClick() {
-                  return _this5.setState({ currency: true });
-                } },
+              { className: 'crypto__button ' + (this.state.currency ? 'active' : ''), onClick: this.toggleCurrency },
               _react2.default.createElement(
                 'span',
                 null,
@@ -35280,9 +35287,7 @@ var Crypto = function (_Component) {
             ),
             _react2.default.createElement(
               'span',
-              { className: 'crypto__button', onClick: function onClick() {
-                  return _this5.setState({ currency: false });
-                } },
+              { className: 'crypto__button ' + (!this.state.currency ? 'active' : ''), onClick: this.toggleCurrency },
               _react2.default.createElement(
                 'span',
                 null,
