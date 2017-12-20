@@ -1,9 +1,9 @@
 {
   "name": "cryptologg",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CryptoLogg only shows the price change of cryptocurrencies since the last time you checked. This is to discourage you from checking the values of your investments often.",
   "main": "webpack.prod.js",
-  "homepage": "http://thomasvaeth.com",
+  "homepage": "http://cryptologg.com",
   "scripts": {
     "start": "webpack --config webpack.dev.js --progress --watch",
     "build": "webpack --config webpack.prod.js",
