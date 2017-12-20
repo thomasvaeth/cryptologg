@@ -18,8 +18,8 @@ class Crypto extends Component {
 
     this.toggleCurrency = this.toggleCurrency.bind(this);
 
-    this.crypto = 'BTC,ETH,LTC,XRP,IOT,DASH';
-    this.cryptoArr = ['Bitcoin', 'Ethereum', 'Litecoin', 'Ripple', 'IOTA', 'Dash'];
+    this.crypto = 'BTC,ETH,BCH,XRP,LTC,IOT';
+    this.cryptoArr = ['Bitcoin', 'Ethereum', 'Bitcoin Cash', 'Ripple', 'Litecoin', 'IOTA'];
   }
 
   componentDidMount() {
@@ -77,7 +77,7 @@ class Crypto extends Component {
 
       if (!crypto.lastValue) {
         const firstVisitEmoji = getEmoji(positiveEmoji);
-        const firstVisitText = toCurrency(crypto.currentValue);
+        const firstVisitText = this.state.currency ? toCurrency(crypto.currentValue) : 'Infinity%';
 
         return this.cards(value, firstVisitEmoji, title, firstVisitText);
       }
@@ -119,7 +119,7 @@ class Crypto extends Component {
 
   render() {
     return (
-      <section className={`crypto section-padding ${this.state.currency ? 'crypto--currency' : 'crypto--percentage'}`}>
+      <section className="crypto section-padding">
         <div className="grid-xlarge">
           <div className="crypto__container">
             {this.marketChange()}

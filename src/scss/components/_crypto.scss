@@ -2,24 +2,21 @@
 // Crypto
 //---------------------------------------------- 
 .crypto {
-  transition: background-color 300ms ease-in-out;
-
-  &--currency {
-    background-color: $color-lightgrey;
-  }
-
-  &--percentage {
-    background-color: $color-alpha;
-  }
+  background-color: $color-lightgrey;
 
   &__container {
 
     @media (min-width: $mq-small) {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-column-gap: 1em;
-      grid-template-rows: 2;
+      grid-template-rows: 3;
       grid-row-gap: 1em;
+    }
+
+    @media (min-width: $mq-med) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 2;
     }
   }
 
@@ -53,16 +50,7 @@
     padding: 4em 1em;
 
     background-color: $color-white;
-    border: 3px solid;
-    transition: border-color 300ms ease-in-out;
-
-    .crypto--currency & {
-      border-color: $color-alpha;
-    }
-
-    .crypto--percentage & {
-      border-color: $color-beta;
-    }
+    border: 3px solid $color-alpha;
   }
 
   &__emoji {
@@ -75,6 +63,7 @@
   &__title {
     font-weight: 700;
     font-size: 2em;
+    text-align: center;
   }
 
   &__value {
@@ -104,17 +93,9 @@
     width: 3em;
 
     background-color: $color-white;
-    border: 3px solid;
+    border: 3px solid $color-alpha;
     cursor: pointer;
     transition: all 200ms ease-in-out;
-
-    .crypto--currency & {
-        border-color: $color-alpha;
-      }
-
-      .crypto--percentage & {
-        border-color: $color-beta;
-      }
 
     &:first-child {
       margin-right: 0.5em;
@@ -124,16 +105,8 @@
     &:active,
     &:focus,
     &.active {
-
-      .crypto--currency & {
-        color: $color-white;
-        background-color: $color-alpha;
-      }
-
-      .crypto--percentage & {
-        color: $color-alpha;
-        background-color: $color-beta;
-      }
+      color: $color-white;
+      background-color: $color-alpha;
     }
 
     span {

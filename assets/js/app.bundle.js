@@ -35128,8 +35128,8 @@ var Crypto = function (_Component) {
 
     _this.toggleCurrency = _this.toggleCurrency.bind(_this);
 
-    _this.crypto = 'BTC,ETH,LTC,XRP,IOT,DASH';
-    _this.cryptoArr = ['Bitcoin', 'Ethereum', 'Litecoin', 'Ripple', 'IOTA', 'Dash'];
+    _this.crypto = 'BTC,ETH,BCH,XRP,LTC,IOT';
+    _this.cryptoArr = ['Bitcoin', 'Ethereum', 'Bitcoin Cash', 'Ripple', 'Litecoin', 'IOTA'];
     return _this;
   }
 
@@ -35202,7 +35202,7 @@ var Crypto = function (_Component) {
 
         if (!crypto.lastValue) {
           var firstVisitEmoji = getEmoji(positiveEmoji);
-          var firstVisitText = toCurrency(crypto.currentValue);
+          var firstVisitText = _this4.state.currency ? toCurrency(crypto.currentValue) : 'Infinity%';
 
           return _this4.cards(value, firstVisitEmoji, title, firstVisitText);
         }
@@ -35264,7 +35264,7 @@ var Crypto = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'section',
-        { className: 'crypto section-padding ' + (this.state.currency ? 'crypto--currency' : 'crypto--percentage') },
+        { className: 'crypto section-padding' },
         _react2.default.createElement(
           'div',
           { className: 'grid-xlarge' },

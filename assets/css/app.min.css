@@ -545,19 +545,18 @@ body {
         width: 3em; } }
 
 .crypto {
-  -webkit-transition: background-color 300ms ease-in-out;
-  transition: background-color 300ms ease-in-out; }
-  .crypto--currency {
-    background-color: #f8f8f8; }
-  .crypto--percentage {
-    background-color: #001856; }
+  background-color: #f8f8f8; }
   @media (min-width: 32em) {
     .crypto__container {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-column-gap: 1em;
-      grid-template-rows: 2;
+      grid-template-rows: 3;
       grid-row-gap: 1em; } }
+  @media (min-width: 54em) {
+    .crypto__container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 2; } }
   .crypto__subcontainer {
     position: relative;
     padding-top: 100%;
@@ -596,20 +595,15 @@ body {
     width: 100%;
     padding: 4em 1em;
     background-color: #fff;
-    border: 3px solid;
-    -webkit-transition: border-color 300ms ease-in-out;
-    transition: border-color 300ms ease-in-out; }
-    .crypto--currency .crypto__content {
-      border-color: #001856; }
-    .crypto--percentage .crypto__content {
-      border-color: #d6f1fc; }
+    border: 3px solid #001856; }
   .crypto__emoji, .popup__emoji {
     display: block;
     font-size: 2.5em;
     line-height: 1; }
   .crypto__title {
     font-weight: 700;
-    font-size: 2em; }
+    font-size: 2em;
+    text-align: center; }
   .crypto__value {
     display: block;
     font-size: 1.5em; }
@@ -625,22 +619,15 @@ body {
     height: 3em;
     width: 3em;
     background-color: #fff;
-    border: 3px solid;
+    border: 3px solid #001856;
     cursor: pointer;
     -webkit-transition: all 200ms ease-in-out;
     transition: all 200ms ease-in-out; }
-    .crypto--currency .crypto__button {
-      border-color: #001856; }
-    .crypto--percentage .crypto__button {
-      border-color: #d6f1fc; }
     .crypto__button:first-child {
       margin-right: 0.5em; }
-    .crypto--currency .crypto__button:hover, .crypto--currency .crypto__button:active, .crypto--currency .crypto__button:focus, .crypto--currency .crypto__button.active {
+    .crypto__button:hover, .crypto__button:active, .crypto__button:focus, .crypto__button.active {
       color: #fff;
       background-color: #001856; }
-    .crypto--percentage .crypto__button:hover, .crypto--percentage .crypto__button:active, .crypto--percentage .crypto__button:focus, .crypto--percentage .crypto__button.active {
-      color: #001856;
-      background-color: #d6f1fc; }
     .crypto__button span {
       font-weight: 700;
       font-size: 1.25em; }
