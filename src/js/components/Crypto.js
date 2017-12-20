@@ -12,7 +12,7 @@ class Crypto extends Component {
     super(props);
 
     this.state = { 
-      cryptoValue: {}, 
+      crypto: {},
       currency: true
     };
 
@@ -33,7 +33,23 @@ class Crypto extends Component {
   spotPrice(currency) {
     axios.get(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${currency}&tsyms=USD`)
       .then(response => {
-        this.setState({ cryptoValue: response.data });
+        const data = response.data;
+        const obj = {};
+
+        Object.keys(data).map((value, idx) => {
+          const currencyFormat = value.toLowerCase();
+          const currentValue = data[value].USD;
+
+          obj[value] = {
+            lastValue: localStorage.getItem(`${currencyFormat}LastValue`),
+            currentValue: currentValue,
+            title: this.cryptoArr[idx]
+          };
+
+          localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
+        });
+
+        this.setState({ crypto: obj });
       })
       .catch(error => {
         console.log(error);
@@ -49,31 +65,29 @@ class Crypto extends Component {
     const neutralEmoji =  ['🤔', '😶', '🙃'];
     const negativeEmoji = ['😵', '😥', '🤢', '🙄', '😤'];
 
-    return Object.keys(this.state.cryptoValue).map((value, idx) => {
-      const currencyFormat = value.toLowerCase();
-      const lastValue = localStorage.getItem(`${currencyFormat}LastValue`);
-      const currentValue = this.state.cryptoValue[value].USD;
-      const title = this.cryptoArr[idx];
+    return Object.keys(this.state.crypto).map(value => {
+      const crypto = this.state.crypto[value];
+      const lastValue = crypto.lastValue;
+      const currentValue = crypto.currentValue;
+      const title = crypto.title;
       let emoji = '';
       let text = '';
 
-      localStorage.setItem(`${currencyFormat}LastValue`, currentValue);
-
-      if (!lastValue) {
+      if (!crypto.lastValue) {
         const firstVisitEmoji = getEmoji(positiveEmoji);
-        const firstVisitText = toCurrency(currentValue);
+        const firstVisitText = toCurrency(crypto.currentValue);
 
         return this.cards(value, firstVisitEmoji, title, firstVisitText);
       }
 
-      const changeValue = this.state.currency ? currentValue - lastValue : ((currentValue - lastValue) / lastValue) * 100;
+      const changeValue = this.state.currency ? (currentValue - lastValue) : ((currentValue - lastValue) / lastValue) * 100;
 
       if (changeValue > 0) {
         emoji = getEmoji(positiveEmoji);
         text = this.state.currency ? toCurrency(changeValue) : toPercentage(changeValue);
       } else if (changeValue < 0) {
         emoji = getEmoji(negativeEmoji);
-        text = this.state.currency ? `–${toCurrency(changeValue)}` : `-${toPercentage(changeValue)}`;
+        text = this.state.currency ? `–${toCurrency(changeValue)}` : `–${toPercentage(changeValue)}`;
       } else {
         emoji = getEmoji(neutralEmoji);
         text = this.state.currency ? toCurrency(0) : '0%';
@@ -103,10 +117,10 @@ class Crypto extends Component {
             {this.marketChange()}
           </div>
           <div className="crypto__format">
-            <span className="crypto__button">
+            <span className="crypto__button" onClick={() => this.setState({ currency: true })}>
               <span>$</span>
             </span>
-            <span className="crypto__button">
+            <span className="crypto__button" onClick={() => this.setState({ currency: false })}>
               <span>%</span>
             </span>
           </div>

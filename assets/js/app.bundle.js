@@ -35122,7 +35122,7 @@ var Crypto = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Crypto.__proto__ || Object.getPrototypeOf(Crypto)).call(this, props));
 
     _this.state = {
-      cryptoValue: {},
+      crypto: {},
       currency: true
     };
 
@@ -35150,7 +35150,23 @@ var Crypto = function (_Component) {
       var _this3 = this;
 
       _axios2.default.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=' + currency + '&tsyms=USD').then(function (response) {
-        _this3.setState({ cryptoValue: response.data });
+        var data = response.data;
+        var obj = {};
+
+        Object.keys(data).map(function (value, idx) {
+          var currencyFormat = value.toLowerCase();
+          var currentValue = data[value].USD;
+
+          obj[value] = {
+            lastValue: localStorage.getItem(currencyFormat + 'LastValue'),
+            currentValue: currentValue,
+            title: _this3.cryptoArr[idx]
+          };
+
+          localStorage.setItem(currencyFormat + 'LastValue', currentValue);
+        });
+
+        _this3.setState({ crypto: obj });
       }).catch(function (error) {
         console.log(error);
       });
@@ -35174,19 +35190,17 @@ var Crypto = function (_Component) {
       var neutralEmoji = ['🤔', '😶', '🙃'];
       var negativeEmoji = ['😵', '😥', '🤢', '🙄', '😤'];
 
-      return Object.keys(this.state.cryptoValue).map(function (value, idx) {
-        var currencyFormat = value.toLowerCase();
-        var lastValue = localStorage.getItem(currencyFormat + 'LastValue');
-        var currentValue = _this4.state.cryptoValue[value].USD;
-        var title = _this4.cryptoArr[idx];
+      return Object.keys(this.state.crypto).map(function (value) {
+        var crypto = _this4.state.crypto[value];
+        var lastValue = crypto.lastValue;
+        var currentValue = crypto.currentValue;
+        var title = crypto.title;
         var emoji = '';
         var text = '';
 
-        localStorage.setItem(currencyFormat + 'LastValue', currentValue);
-
-        if (!lastValue) {
+        if (!crypto.lastValue) {
           var firstVisitEmoji = getEmoji(positiveEmoji);
-          var firstVisitText = toCurrency(currentValue);
+          var firstVisitText = toCurrency(crypto.currentValue);
 
           return _this4.cards(value, firstVisitEmoji, title, firstVisitText);
         }
@@ -35198,7 +35212,7 @@ var Crypto = function (_Component) {
           text = _this4.state.currency ? toCurrency(changeValue) : toPercentage(changeValue);
         } else if (changeValue < 0) {
           emoji = getEmoji(negativeEmoji);
-          text = _this4.state.currency ? '\u2013' + toCurrency(changeValue) : '-' + toPercentage(changeValue);
+          text = _this4.state.currency ? '\u2013' + toCurrency(changeValue) : '\u2013' + toPercentage(changeValue);
         } else {
           emoji = getEmoji(neutralEmoji);
           text = _this4.state.currency ? toCurrency(0) : '0%';
@@ -35237,6 +35251,8 @@ var Crypto = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this5 = this;
+
       return _react2.default.createElement(
         'section',
         { className: 'crypto section-padding' },
@@ -35253,7 +35269,9 @@ var Crypto = function (_Component) {
             { className: 'crypto__format' },
             _react2.default.createElement(
               'span',
-              { className: 'crypto__button' },
+              { className: 'crypto__button', onClick: function onClick() {
+                  return _this5.setState({ currency: true });
+                } },
               _react2.default.createElement(
                 'span',
                 null,
@@ -35262,7 +35280,9 @@ var Crypto = function (_Component) {
             ),
             _react2.default.createElement(
               'span',
-              { className: 'crypto__button' },
+              { className: 'crypto__button', onClick: function onClick() {
+                  return _this5.setState({ currency: false });
+                } },
               _react2.default.createElement(
                 'span',
                 null,
