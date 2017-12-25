@@ -23,6 +23,12 @@ class Crypto extends Component {
   }
 
   componentDidMount() {
+    const currency = localStorage.getItem('currency');
+
+    if (currency !== null) {
+      this.setState({ currency: JSON.parse(currency) });
+    }
+
     this.spotPrice(this.crypto);
     
     document.addEventListener('visibilitychange', () => {
@@ -30,6 +36,10 @@ class Crypto extends Component {
         this.spotPrice(this.crypto);
       }
     });
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('currency', this.state.currency);
   }
 
   spotPrice(currency) {
@@ -92,7 +102,7 @@ class Crypto extends Component {
         text = this.state.currency ? `–${toCurrency(changeValue)}` : `–${toPercentage(changeValue)}`;
       } else {
         emoji = getEmoji(neutralEmoji);
-        text = this.state.currency ? toCurrency(0) : '0%';
+        text = this.state.currency ? '$0.00' : '0%';
       }
 
       return this.cards(value, emoji, title, text);
@@ -124,14 +134,14 @@ class Crypto extends Component {
           <div className="crypto__container">
             {this.marketChange()}
           </div>
-          <div className="crypto__format">
-            <span className={`crypto__button ${this.state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
-              <span>$</span>
-            </span>
-            <span className={`crypto__button ${!this.state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
-              <span>%</span>
-            </span>
-          </div>
+        </div>
+        <div className="crypto__format">
+          <span className={`crypto__button ${this.state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
+            <span>$</span>
+          </span>
+          <span className={`crypto__button ${!this.state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
+            <span>%</span>
+          </span>
         </div>
       </section>
     );
