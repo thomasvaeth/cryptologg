@@ -15,7 +15,7 @@ const Footer = () => {
       <span className="footer__text">Coded With Code in {year}. 👨‍💻</span>
     </footer>
   );
-}
+};
 
 // ----------------------------------------------
 // Exports

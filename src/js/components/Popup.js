@@ -38,29 +38,23 @@ class Popup extends Component {
   render() {
     return (
       <div>
-        <div className="popup__open">
-          <span onClick={this.togglePopup}>About</span>
-        </div>
         <section className={`popup ${this.state.popup ? 'popup-open' : ''}`} ref={popup => this.popup = popup}>
           <div className="popup__close">
             <div></div>
           </div>
           <div className="popup__container" ref={popupContainer => this.popupContainer = popupContainer}>
             <div className="popup__subcontainer section-padding">
-              <span className="popup__emoji">🙋‍♂️</span>
+              {this.props.leftContent}
             </div>
             <div className="popup__content">
-              <p className="popup__text">
-                CryptoLogg was built by <a className="popup__link" href="http://thomasvaeth.com" target="_blank">Thomas Vaeth</a> in Seattle, Washington. 
-                Thomas was feeling losses significantly more than gains and CryptoLogg is his way of coming to grip with his emotional liability.
-              </p>
+              {this.props.rightContent}
             </div>
           </div>
         </section>
       </div>
     );
   }
-};
+}
 
 // ----------------------------------------------
 // Exports

@@ -9,6 +9,7 @@
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: $header-height;
   width: 100%;
   padding: {
@@ -32,6 +33,16 @@
       @media (min-width: $mq-small) {
         width: 3em;
       }
+    }
+  }
+
+  &__popup {
+    font-weight: 700;
+    font-size: 1.25em;
+    cursor: pointer;
+
+    @media (min-width: $mq-small) {
+      font-size: 1.5em;
     }
   }
 }

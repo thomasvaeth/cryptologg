@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 // ----------------------------------------------
-// Crypto
+// Time
 // ----------------------------------------------
 class Time extends Component {
   constructor(props) {

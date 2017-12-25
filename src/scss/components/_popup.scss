@@ -28,22 +28,6 @@
     opacity: 1;
   }
 
-  &__open {
-    @extend .header;
-
-    justify-content: flex-end;
-
-    & > span {
-      font-weight: 700;
-      font-size: 1.25em;
-      cursor: pointer;
-
-      @media (min-width: $mq-small) {
-        font-size: 1.5em;
-      }
-    }
-  }
-
   &__close {
     position: fixed;
     top: 0.5em;
