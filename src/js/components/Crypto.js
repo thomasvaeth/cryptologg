@@ -115,7 +115,7 @@ class Crypto extends Component {
         <div className="crypto__content">
           <span className="crypto__emoji">{emoji}</span>
           <h2 className="crypto__title">{title}</h2>
-          <span className="crypto__value">{text}</span>
+          <span className="crypto__value" onClick={this.toggleCurrency}>{text}</span>
         </div>
       </div>
     );
