@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -8,8 +9,8 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'assets/js'),
-    filename: '[name].bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'assets/js/[name].bundle.js'
   },
   module: {
     loaders: [
@@ -25,6 +26,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('../css/[name].min.css')
+    new ExtractTextPlugin('assets/css/[name].min.css'),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
   ]
 };
