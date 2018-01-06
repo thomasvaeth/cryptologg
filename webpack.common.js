@@ -1,16 +1,15 @@
+const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: [
-      './src/js/app.js'
-    ]
+    app: './src/js/app.js',
+    vendor: ['react', 'react-dom', 'axios', 'moment']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'assets/js/[name].bundle.js'
+    filename: 'assets/js/[name]-[chunkhash].bundle.js'
   },
   module: {
     loaders: [
@@ -26,9 +25,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('assets/css/[name].min.css'),
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
+    }),
+    new ExtractTextPlugin('assets/css/[name].min.css')
   ]
 };

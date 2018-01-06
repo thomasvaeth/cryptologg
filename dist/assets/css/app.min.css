@@ -91,7 +91,8 @@ figure {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   /* 1 */
   height: 0;
   /* 1 */
@@ -129,7 +130,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */ }
 
 /**
@@ -304,7 +306,8 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   /* 1 */
   color: inherit;
   /* 2 */
@@ -339,7 +342,8 @@ textarea {
  */
 [type="checkbox"],
 [type="radio"] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */ }
@@ -419,7 +423,8 @@ template {
 *,
 *:before,
 *:after {
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 img,
 figure {
@@ -553,20 +558,15 @@ body {
   background-color: #f8f8f8; }
   @media (min-width: 32em) {
     .crypto__container {
-      display: -ms-grid;
       display: grid;
-      -ms-grid-columns: (1fr)[2];
-          grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-column-gap: 1em;
-      -ms-grid-rows: 3;
-          grid-template-rows: 3;
+      grid-template-rows: 3;
       grid-row-gap: 1em; } }
   @media (min-width: 54em) {
     .crypto__container {
-      -ms-grid-columns: (1fr)[3];
-          grid-template-columns: repeat(3, 1fr);
-      -ms-grid-rows: 2;
-          grid-template-rows: 2; } }
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 2; } }
   .crypto__subcontainer {
     position: relative;
     padding-top: 100%;
@@ -632,6 +632,7 @@ body {
     background-color: #fff;
     border: 3px solid #001856;
     cursor: pointer;
+    -webkit-transition: all 200ms ease-in-out;
     transition: all 200ms ease-in-out; }
     .crypto__button:first-child {
       margin-right: 0.5em; }
@@ -664,6 +665,7 @@ body {
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.9);
   opacity: 0;
+  -webkit-transition: all 600ms ease-in-out;
   transition: all 600ms ease-in-out; }
   .popup.popup-open {
     z-index: 9999;
