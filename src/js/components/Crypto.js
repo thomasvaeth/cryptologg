@@ -18,8 +18,56 @@ class Crypto extends Component {
 
     this.toggleCurrency = this.toggleCurrency.bind(this);
 
-    this.crypto = 'BTC,ETH,BCH,XRP,LTC,IOT';
-    this.cryptoArr = ['Bitcoin', 'Ethereum', 'Bitcoin Cash', 'Ripple', 'Litecoin', 'IOTA'];
+    this.crypto = [
+      {
+        name: 'Bitcoin',
+        symbol: 'BTC'
+      },
+      {
+        name: 'Ripple',
+        symbol: 'XRP'
+      },
+      {
+        name: 'Ethereum',
+        symbol: 'ETH'
+      },
+      {
+        name: 'Bitcoin Cash',
+        symbol: 'BCH'
+      },
+      {
+        name: 'Cardano',
+        symbol: 'ADA'
+      },
+      {
+        name: 'Litecoin',
+        symbol: 'LTC'
+      },
+      {
+        name: 'NEM',
+        symbol: 'XEM'
+      },
+      {
+        name: 'Stellar',
+        symbol: 'XLM'
+      },
+      {
+        name: 'TRON',
+        symbol: 'TRX'
+      },
+      {
+        name: 'IOTA',
+        symbol: 'IOT'
+      },
+      {
+        name: 'Dash',
+        symbol: 'DASH'
+      },
+      {
+        name: 'NEO',
+        symbol: 'NEO'
+      }
+    ];
   }
 
   componentDidMount() {
@@ -29,11 +77,17 @@ class Crypto extends Component {
       this.setState({ currency: JSON.parse(currency) });
     }
 
-    this.spotPrice(this.crypto);
+    const cryptoArr = [];
+    this.crypto.forEach(currency => {
+      cryptoArr.push(currency.symbol);  
+    });
+    const crypto = cryptoArr.join(',');
+
+    this.spotPrice(crypto);
     
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'visible') {
-        this.spotPrice(this.crypto);
+        this.spotPrice(crypto);
       }
     });
   }
@@ -55,7 +109,7 @@ class Crypto extends Component {
           obj[value] = {
             lastValue: localStorage.getItem(`${currencyFormat}LastValue`),
             currentValue: currentValue,
-            title: this.cryptoArr[idx]
+            title: this.crypto[idx].name
           };
 
           localStorage.setItem(`${currencyFormat}LastValue`, currentValue);

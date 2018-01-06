@@ -10,18 +10,24 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-column-gap: 1em;
-      grid-template-rows: 3;
       grid-row-gap: 1em;
     }
 
     @media (min-width: $mq-med) {
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 2;
+    }
+
+    @media (min-width: $mq-large) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: $mq-xlarge) {
+      grid-template-columns: repeat(6, 1fr);
     }
   }
 
   &__subcontainer {
-    @include nth-animation-delay(6, $delay: 300ms);
+    @include nth-animation-delay(12, $delay: 300ms);
 
     position: relative;
 
