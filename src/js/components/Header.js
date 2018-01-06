@@ -13,7 +13,7 @@ class Header extends Component {
 
     this.toggleAbout = this.toggleAbout.bind(this);
 
-    this.logo = ['chart-down', 'chart-up'][Math.floor(Math.random() * 2)];
+    this.logo = ['📉', '📈'][Math.floor(Math.random() * 2)];
   }
 
   toggleAbout() {
@@ -34,9 +34,7 @@ class Header extends Component {
     return (
       <div>
         <header className="header">
-          <figure className="header__img">
-            <img src={`assets/images/${this.logo}.png`} alt="CryptoLogg"/>
-          </figure>
+          <span className="header__img">{this.logo}</span>
           <span className="header__popup" onClick={this.toggleAbout}>About</span>
         </header>
         <Popup ref="popup" leftContent={popupLeft} rightContent={popupRight} />

@@ -25,14 +25,12 @@
   }
 
   &__img {
+    display: block;
+    
+    font-size: 2.5em;
 
-    img {
-      display: block;
-      width: 2.5em;
-
-      @media (min-width: $mq-small) {
-        width: 3em;
-      }
+    @media (min-width: $mq-small) {
+      font-size: 3em;
     }
   }
 
