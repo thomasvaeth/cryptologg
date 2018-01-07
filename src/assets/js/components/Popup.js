@@ -2,6 +2,7 @@
 // Imports
 // ----------------------------------------------
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // ----------------------------------------------
 // Popup
@@ -55,6 +56,11 @@ class Popup extends Component {
     );
   }
 }
+
+Popup.propTypes = {
+  leftContent: PropTypes.object,
+  rightContent: PropTypes.object
+};
 
 // ----------------------------------------------
 // Exports

@@ -77,10 +77,7 @@ class Crypto extends Component {
       this.setState({ currency: JSON.parse(currency) });
     }
 
-    const cryptoArr = [];
-    this.crypto.forEach(currency => {
-      cryptoArr.push(currency.symbol);  
-    });
+    const cryptoArr = this.crypto.map(currency => currency.symbol);
     const crypto = cryptoArr.join(',');
 
     this.spotPrice(crypto);

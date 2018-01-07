@@ -17,7 +17,7 @@ class Header extends Component {
   }
 
   toggleAbout() {
-    this.refs.popup.togglePopup();
+    this.popup.togglePopup();
   }
 
   render() {
@@ -26,7 +26,7 @@ class Header extends Component {
     );
     const popupRight = (
       <p className="popup__text">
-        CryptoLogg was built by <a className="popup__link" href="http://thomasvaeth.com" target="_blank">Thomas Vaeth</a> in Seattle, Washington. 
+        CryptoLogg was built by <a className="popup__link" href="http://thomasvaeth.com" target="_blank" rel="noopener noreferrer">Thomas Vaeth</a> in Seattle, Washington. 
         Thomas was feeling losses significantly more than gains and CryptoLogg is his way of coming to grip with his emotional liability.
       </p>
     );
@@ -37,7 +37,7 @@ class Header extends Component {
           <span className="header__img">{this.logo}</span>
           <span className="header__popup" onClick={this.toggleAbout}>About</span>
         </header>
-        <Popup ref="popup" leftContent={popupLeft} rightContent={popupRight} />
+        <Popup ref={popup => this.popup = popup} leftContent={popupLeft} rightContent={popupRight} />
       </div>
     );
   }

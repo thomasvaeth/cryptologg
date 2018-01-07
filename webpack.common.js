@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/js/app.js',
+    app: './src/assets/js/app.js',
     vendor: ['react', 'react-dom', 'axios', 'moment']
   },
   output: {
