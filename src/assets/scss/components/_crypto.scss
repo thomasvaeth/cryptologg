@@ -31,8 +31,6 @@
 
     position: relative;
 
-    padding-top: 100%;
-
     animation: fade-in-up ease-in-out 1s both;
 
     &:not(:last-child) {
@@ -40,6 +38,13 @@
       @media (max-width: $mq-small) {
         margin-bottom: 1em;
       }
+    }
+
+    &:before {
+      content: "";
+
+      display: block;
+      padding-top: 100%;
     }
   }
 
