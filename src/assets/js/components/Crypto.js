@@ -24,12 +24,12 @@ class Crypto extends Component {
         symbol: 'BTC'
       },
       {
-        name: 'Ripple',
-        symbol: 'XRP'
-      },
-      {
         name: 'Ethereum',
         symbol: 'ETH'
+      },
+      {
+        name: 'Ripple',
+        symbol: 'XRP'
       },
       {
         name: 'Bitcoin Cash',
@@ -52,10 +52,6 @@ class Crypto extends Component {
         symbol: 'XLM'
       },
       {
-        name: 'TRON',
-        symbol: 'TRX'
-      },
-      {
         name: 'IOTA',
         symbol: 'IOT'
       },
@@ -66,6 +62,10 @@ class Crypto extends Component {
       {
         name: 'NEO',
         symbol: 'NEO'
+      },
+      {
+        name: 'TRON',
+        symbol: 'TRX'
       }
     ];
   }
