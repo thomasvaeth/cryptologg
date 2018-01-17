@@ -12,8 +12,6 @@ class Header extends Component {
     super(props);
 
     this.toggleAbout = this.toggleAbout.bind(this);
-
-    this.logo = ['📉', '📈'][Math.floor(Math.random() * 2)];
   }
 
   toggleAbout() {
@@ -21,6 +19,7 @@ class Header extends Component {
   }
 
   render() {
+    const logo = ['📉', '📈'][Math.floor(Math.random() * 2)];
     const popupLeft = (
       <span className="popup__emoji">🙋‍♂️</span>
     );
@@ -34,7 +33,7 @@ class Header extends Component {
     return (
       <div>
         <header className="header">
-          <span className="header__img">{this.logo}</span>
+          <span className="header__img">{logo}</span>
           <span className="header__popup" onClick={this.toggleAbout}>About</span>
         </header>
         <Popup ref={popup => this.popup = popup} leftContent={popupLeft} rightContent={popupRight} />

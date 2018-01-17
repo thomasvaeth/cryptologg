@@ -1,7 +1,7 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './Header';
 import Mast from './Mast';
 import Crypto from './Crypto';
@@ -11,21 +11,19 @@ import Footer from './Footer';
 // ----------------------------------------------
 // App
 // ----------------------------------------------
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <main>
-          <Mast />
-          <Crypto />
-          <Time />
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <Header />
+      <main>
+        <Mast />
+        <Crypto />
+        <Time />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 // ----------------------------------------------
 // Exports
