@@ -11,19 +11,17 @@ import Footer from './Footer';
 // ----------------------------------------------
 // App
 // ----------------------------------------------
-const App = () => {
-  return (
-    <div>
-      <Header />
-      <main>
-        <Mast />
-        <Crypto />
-        <Time />
-      </main>
-      <Footer />
-    </div>
-  );
-};
+const App = () => (
+  <div>
+    <Header />
+    <main>
+      <Mast />
+      <Crypto />
+      <Time />
+    </main>
+    <Footer />
+  </div>
+);
 
 // ----------------------------------------------
 // Exports
