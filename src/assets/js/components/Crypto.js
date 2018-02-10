@@ -1,13 +1,13 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React, { Component } from 'react';
+import { h, Component } from 'preact';
 import axios from 'axios';
 
 // ----------------------------------------------
 // Crypto
 // ----------------------------------------------
-class Crypto extends Component {
+export default class Crypto extends Component {
   constructor(props) {
     super(props);
 
@@ -178,7 +178,7 @@ class Crypto extends Component {
     }));
   }
 
-  render() {
+  render(props, state) {
     return (
       <section className="crypto section-padding">
         <div className="grid-xlarge">
@@ -187,10 +187,10 @@ class Crypto extends Component {
           </div>
         </div>
         <div className="crypto__format">
-          <span className={`crypto__button ${this.state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
+          <span className={`crypto__button ${state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
             <span>$</span>
           </span>
-          <span className={`crypto__button ${!this.state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
+          <span className={`crypto__button ${!state.currency ? 'active' : ''}`} onClick={this.toggleCurrency}>
             <span>%</span>
           </span>
         </div>
@@ -198,8 +198,3 @@ class Crypto extends Component {
     );
   }
 }
-
-// ----------------------------------------------
-// Exports
-// ----------------------------------------------
-export default Crypto;

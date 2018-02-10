@@ -1,13 +1,13 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React, { Component } from 'react';
+import { h, Component } from 'preact';
 import Popup from './Popup';
 
 // ----------------------------------------------
 // Header
 // ----------------------------------------------
-class Header extends Component {
+export default class Header extends Component {
   constructor(props) {
     super(props);
 
@@ -41,8 +41,3 @@ class Header extends Component {
     );
   }
 }
-
-// ----------------------------------------------
-// Exports
-// ----------------------------------------------
-export default Header;

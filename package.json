@@ -1,6 +1,6 @@
 {
   "name": "cryptologg",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "CryptoLogg only shows the price change of cryptocurrencies since the last time you checked. This is to discourage you from checking the values of your investments often.",
   "main": "webpack.prod.js",
   "homepage": "http://cryptologg.com",
@@ -28,8 +28,8 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.13.0",
     "eslint-config-eslint": "^4.0.0",
@@ -51,7 +51,6 @@
   "dependencies": {
     "axios": "^0.17.1",
     "moment": "^2.19.4",
-    "preact": "^8.2.7",
-    "preact-compat": "^3.18.0"
+    "preact": "^8.2.7"
   }
 }

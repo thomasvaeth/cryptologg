@@ -4,7 +4,13 @@
     "react"
   ],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "settings": {
+    "react": {
+      "pragma": "h"
+    }
+  },
   "rules": {
+    "react/display-name": "warn",
     "no-console": "warn",
     "no-undef": "off"
   }

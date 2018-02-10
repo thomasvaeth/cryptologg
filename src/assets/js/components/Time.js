@@ -1,13 +1,13 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React, { Component } from 'react';
+import { h, Component } from 'preact';
 import moment from 'moment';
 
 // ----------------------------------------------
 // Time
 // ----------------------------------------------
-class Time extends Component {
+export default class Time extends Component {
   constructor(props) {
     super(props);
 
@@ -67,22 +67,17 @@ class Time extends Component {
     return quotes[Math.floor(Math.random() * quotes.length)];
   }
 
-  render() {
+  render(props, state) {
     const quote = this.quote();
 
     return (
       <section className="time section-padding">
         <div className="grid">
           <p className="time__text">
-            {quote.author} said, “{quote.quote},” but the last time you checked your portfolio was {this.state.time} ago. ⏳
+            {quote.author} said, “{quote.quote},” but the last time you checked your portfolio was {state.time} ago. ⏳
           </p>
         </div>
       </section>
     );
   }
 }
-
-// ----------------------------------------------
-// Exports
-// ----------------------------------------------
-export default Time;

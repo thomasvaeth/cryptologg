@@ -1,23 +1,14 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React from 'react';
+import { h } from 'preact';
 import moment from 'moment';
 
 // ----------------------------------------------
 // Footer
 // ----------------------------------------------
-const Footer = () => {
-  const year = moment().year();
-
-  return (
-    <footer className="footer">
-      <span className="footer__text">Coded With Code in {year}. 👨‍💻</span>
-    </footer>
-  );
-};
-
-// ----------------------------------------------
-// Exports
-// ----------------------------------------------
-export default Footer;
+export default () => (
+  <footer className="footer">
+    <span className="footer__text">Coded With Code in {moment().year()}. 👨‍💻</span>
+  </footer>
+);

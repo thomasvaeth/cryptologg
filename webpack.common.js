@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: {
     app: './src/assets/js/app.js',
-    vendor: ['react', 'react-dom', 'axios', 'moment']
+    vendor: ['preact', 'axios', 'moment']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -23,12 +23,6 @@ module.exports = {
         loader: ExtractTextPlugin.extract('css-loader?-autoprefixer!postcss-loader!sass-loader')
       }
     ]
-  },
-  resolve: {
-    "alias": {
-      "react": "preact-compat",
-      "react-dom": "preact-compat"
-    }
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({

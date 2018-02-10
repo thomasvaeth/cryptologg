@@ -1,12 +1,12 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React from 'react';
+import { h } from 'preact';
 
 // ----------------------------------------------
 // Mast
 // ----------------------------------------------
-const Mast = () => {
+export default () => {
   return (
     <section className="mast section-padding">
       <div className="grid">
@@ -17,8 +17,3 @@ const Mast = () => {
     </section>
   );
 };
-
-// ----------------------------------------------
-// Exports
-// ----------------------------------------------
-export default Mast;

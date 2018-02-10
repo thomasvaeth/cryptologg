@@ -1,7 +1,7 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React from 'react';
+import { h } from 'preact';
 import Header from './Header';
 import Mast from './Mast';
 import Crypto from './Crypto';
@@ -11,7 +11,7 @@ import Footer from './Footer';
 // ----------------------------------------------
 // App
 // ----------------------------------------------
-const App = () => (
+export default () => (
   <div>
     <Header />
     <main>
@@ -22,8 +22,3 @@ const App = () => (
     <Footer />
   </div>
 );
-
-// ----------------------------------------------
-// Exports
-// ----------------------------------------------
-export default App;

@@ -1,13 +1,13 @@
 // ----------------------------------------------
 // Imports
 // ----------------------------------------------
-import React, { Component } from 'react';
+import { h, Component } from 'preact';
 import PropTypes from 'prop-types';
 
 // ----------------------------------------------
 // Popup
 // ----------------------------------------------
-class Popup extends Component {
+export default class Popup extends Component {
   constructor(props) {
     super(props);
 
@@ -36,19 +36,19 @@ class Popup extends Component {
     }));
   }
 
-  render() {
+  render(props, state) {
     return (
       <div>
-        <section className={`popup ${this.state.popup ? 'popup-open' : ''}`} ref={popup => this.popup = popup}>
+        <section className={`popup ${state.popup ? 'popup-open' : ''}`} ref={popup => this.popup = popup}>
           <div className="popup__close">
             <div></div>
           </div>
           <div className="popup__container" ref={popupContainer => this.popupContainer = popupContainer}>
             <div className="popup__subcontainer section-padding">
-              {this.props.leftContent}
+              {props.leftContent}
             </div>
             <div className="popup__content">
-              {this.props.rightContent}
+              {props.rightContent}
             </div>
           </div>
         </section>
@@ -61,8 +61,3 @@ Popup.propTypes = {
   leftContent: PropTypes.object,
   rightContent: PropTypes.object
 };
-
-// ----------------------------------------------
-// Exports
-// ----------------------------------------------
-export default Popup;
