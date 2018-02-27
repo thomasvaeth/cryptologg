@@ -32,37 +32,50 @@ export default class Time extends Component {
     let humanize = this.state.time;
     let timeFormat = 0;
 
-    if (timeDifference < 44000) {
-      humanize = 'a few seconds';
-    } else if (timeDifference === 44000) {
-      humanize = '44 seconds';
-    } else if (timeDifference <= 89000) {
-      humanize = 'a minute';
-    } else if (timeDifference <= 150000) {
-      humanize = '2 minutes';
-    } else if (timeDifference <= 2640000) {
-      timeFormat = Math.round(timeDifference / 1000 / 60);
-      humanize = `${timeFormat} minutes`;
-    } else if (timeDifference <= 5340000) {
-      humanize = 'an hour';
-    } else if (timeDifference <= 75600000) {
-      timeFormat = Math.round(timeDifference / 1000 / 60 / 60);
-      humanize = `${timeFormat} hours`;
-    } else if (timeDifference <= 126000000) {
-      humanize = 'a day';
-    } else if (timeDifference <= 2160000000) {
-      timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24);
-      humanize = `${timeFormat} days`;
-    } else if (timeDifference <= 3888000000) {
-      humanize = 'a month';
-    } else if (timeDifference <= 27561600000) {
-      timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24 / 30);
-      humanize = `${timeFormat} months`;
-    } else if (timeDifference <= 47260800000) {
-      humanize = 'a year';
-    } else {
-      timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24 / 30 / 12);
-      humanize = `${timeFormat} years`;
+    switch (true) {
+      case (timeDifference < 44000):
+        humanize = 'a few seconds';
+        break;
+      case (timeDifference === 44000):
+        humanize = '44 seconds';
+        break;
+      case (timeDifference <= 89000):
+        humanize = 'a minute';
+        break;
+      case (timeDifference <= 150000):
+        humanize = '2 minutes';
+        break;
+      case (timeDifference <= 2640000):
+        timeFormat = Math.round(timeDifference / 1000 / 60);
+        humanize = `${timeFormat} minutes`;
+        break;
+      case (timeDifference <= 5340000):
+        humanize = 'an hour';
+        break;
+      case (timeDifference <= 75600000):
+        timeFormat = Math.round(timeDifference / 1000 / 60 / 60);
+        humanize = `${timeFormat} hours`;
+        break;
+      case (timeDifference <= 126000000):
+        humanize = 'a day';
+        break;
+      case (timeDifference <= 2160000000):
+        timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24);
+        humanize = `${timeFormat} days`;
+        break;
+      case (timeDifference <= 3888000000):
+        humanize = 'a month';
+        break;
+      case (timeDifference <= 27561600000):
+        timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24 / 30);
+        humanize = `${timeFormat} months`;
+        break;
+      case (timeDifference <= 47260800000):
+        humanize = 'a year';
+        break;
+      default:
+        timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24 / 30 / 12);
+        humanize = `${timeFormat} years`;
     }
 
     localStorage.setItem('lastChecked', checked);
