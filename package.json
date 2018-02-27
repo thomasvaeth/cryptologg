@@ -5,11 +5,11 @@
   "main": "webpack.prod.js",
   "homepage": "http://cryptologg.com",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dashboard -- webpack-dev-server --config webpack.dev.js",
     "build": "npm run clean && webpack --config webpack.prod.js",
     "clean": "rimraf dist/assets/js",
     "deploy": "npm run build && s3-website deploy dist",
-    "lint": "eslint src/assets/js/**; exit 0"
+    "lint": "eslint --ext .js src"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "sass-loader": "^6.0.6",
     "uglifyjs-webpack-plugin": "^1.1.2",
     "webpack": "^3.10.0",
+    "webpack-dashboard": "^1.1.1",
     "webpack-dev-server": "^2.10.0",
     "webpack-merge": "^4.1.1"
   },
