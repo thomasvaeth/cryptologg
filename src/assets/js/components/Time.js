@@ -33,36 +33,36 @@ export default class Time extends Component {
     let timeFormat = 0;
 
     if (timeDifference < 44000) {
-      humanize = 'a few seconds ago';
+      humanize = 'a few seconds';
     } else if (timeDifference === 44000) {
-      humanize = '44 seconds ago';
+      humanize = '44 seconds';
     } else if (timeDifference <= 89000) {
-      humanize = 'a minute ago';
+      humanize = 'a minute';
     } else if (timeDifference <= 150000) {
-      humanize = '2 minutes ago';
+      humanize = '2 minutes';
     } else if (timeDifference <= 2640000) {
       timeFormat = Math.round(timeDifference / 1000 / 60);
-      humanize = `${timeFormat} minutes ago`;
+      humanize = `${timeFormat} minutes`;
     } else if (timeDifference <= 5340000) {
-      humanize = 'an hour ago';
+      humanize = 'an hour';
     } else if (timeDifference <= 75600000) {
       timeFormat = Math.round(timeDifference / 1000 / 60 / 60);
-      humanize = `${timeFormat} hours ago`;
+      humanize = `${timeFormat} hours`;
     } else if (timeDifference <= 126000000) {
-      humanize = 'a day ago';
+      humanize = 'a day';
     } else if (timeDifference <= 2160000000) {
       timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24);
-      humanize = `${timeFormat} days ago`;
+      humanize = `${timeFormat} days`;
     } else if (timeDifference <= 3888000000) {
-      humanize = 'a month ago';
+      humanize = 'a month';
     } else if (timeDifference <= 27561600000) {
       timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24 / 30);
-      humanize = `${timeFormat} months ago`;
+      humanize = `${timeFormat} months`;
     } else if (timeDifference <= 47260800000) {
-      humanize = 'a year ago';
+      humanize = 'a year';
     } else {
       timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24 / 30 / 12);
-      humanize = `${timeFormat} years ago`;
+      humanize = `${timeFormat} years`;
     }
 
     localStorage.setItem('lastChecked', checked);
