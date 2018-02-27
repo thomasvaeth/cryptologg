@@ -8,6 +8,6 @@ import { h } from 'preact';
 // ----------------------------------------------
 export default () => (
   <footer className="footer">
-    <span className="footer__text">Coded With Code in 2018. 👨‍💻</span>
+    <span className="footer__text">Coded With Code in {new Date().getFullYear()}. 👨‍💻</span>
   </footer>
 );
