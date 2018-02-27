@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: {
     app: './src/assets/js/app.js',
-    vendor: ['preact', 'axios', 'moment']
+    vendor: ['preact', 'axios']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

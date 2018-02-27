@@ -2,7 +2,6 @@
 // Imports
 // ----------------------------------------------
 import { h, Component } from 'preact';
-import moment from 'moment';
 
 // ----------------------------------------------
 // Time
@@ -27,13 +26,48 @@ export default class Time extends Component {
   }
 
   time() {
-    const checked = moment().toISOString();
+    const checked = new Date().toISOString();
     const lastChecked = localStorage.getItem('lastChecked');
-    const timeDifference = moment.duration(moment(checked).diff(moment(lastChecked))).humanize();
+    const timeDifference = new Date(checked) - new Date(lastChecked);
+    let humanize = this.state.time;
+    let timeFormat = 0;
+
+    if (timeDifference < 44000) {
+      humanize = 'a few seconds ago';
+    } else if (timeDifference === 44000) {
+      humanize = '44 seconds ago';
+    } else if (timeDifference <= 89000) {
+      humanize = 'a minute ago';
+    } else if (timeDifference <= 150000) {
+      humanize = '2 minutes ago';
+    } else if (timeDifference <= 2640000) {
+      timeFormat = Math.round(timeDifference / 1000 / 60);
+      humanize = `${timeFormat} minutes ago`;
+    } else if (timeDifference <= 5340000) {
+      humanize = 'an hour ago';
+    } else if (timeDifference <= 75600000) {
+      timeFormat = Math.round(timeDifference / 1000 / 60 / 60);
+      humanize = `${timeFormat} hours ago`;
+    } else if (timeDifference <= 126000000) {
+      humanize = 'a day ago';
+    } else if (timeDifference <= 2160000000) {
+      timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24);
+      humanize = `${timeFormat} days ago`;
+    } else if (timeDifference <= 3888000000) {
+      humanize = 'a month ago';
+    } else if (timeDifference <= 27561600000) {
+      timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24 / 30);
+      humanize = `${timeFormat} months ago`;
+    } else if (timeDifference <= 47260800000) {
+      humanize = 'a year ago';
+    } else {
+      timeFormat = Math.round(timeDifference / 1000 / 60 / 60 / 24 / 30 / 12);
+      humanize = `${timeFormat} years ago`;
+    }
 
     localStorage.setItem('lastChecked', checked);
 
-    this.setState({ time: lastChecked ? timeDifference : this.state.time });
+    this.setState({ time: lastChecked ? humanize : this.state.time });
   }
 
   quote() {
