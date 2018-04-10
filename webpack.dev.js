@@ -4,6 +4,7 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
+  mode: 'development',
   plugins: [
     new DashboardPlugin(),
     new HtmlWebpackPlugin({

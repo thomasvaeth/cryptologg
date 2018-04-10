@@ -6,6 +6,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(common, {
+  mode: 'production',
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -16,8 +17,5 @@ module.exports = merge(common, {
     }),
     new OptimizeCssAssetsPlugin(),
     new UglifyJsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    })
   ]
 });
