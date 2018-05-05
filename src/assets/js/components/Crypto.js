@@ -36,16 +36,16 @@ export default class Crypto extends Component {
         symbol: 'BCH'
       },
       {
-        name: 'Cardano',
-        symbol: 'ADA'
+        name: 'EOS',
+        symbol: 'EOS'
       },
       {
         name: 'Litecoin',
         symbol: 'LTC'
       },
       {
-        name: 'NEM',
-        symbol: 'XEM'
+        name: 'Cardano',
+        symbol: 'ADA'
       },
       {
         name: 'Stellar',
@@ -56,16 +56,16 @@ export default class Crypto extends Component {
         symbol: 'IOT'
       },
       {
-        name: 'Dash',
-        symbol: 'DASH'
+        name: 'TRON',
+        symbol: 'TRX'
       },
       {
         name: 'NEO',
         symbol: 'NEO'
       },
       {
-        name: 'TRON',
-        symbol: 'TRX'
+        name: 'Dash',
+        symbol: 'DASH'
       }
     ];
   }
